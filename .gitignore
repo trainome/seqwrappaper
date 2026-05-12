@@ -71,3 +71,4 @@ figures/*.RDS
 # do not track .docx
 *.docx
 
+.positai

@@ -1352,7 +1352,7 @@ library(stringr)
 
 
 # To get the gsea results we need to run the figure 4 script
-if(!file.exists("data-out/gsea_results.RDS")) source("figures/figure4.R")
+if(!file.exists("data-out/gsea_results.RDS")) source("figures/figure-4.R")
 
 gsea_results <- readRDS("data-out/gsea_results.RDS")
 
