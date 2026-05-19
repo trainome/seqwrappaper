@@ -18,7 +18,6 @@ agree to abide by our [code of conduct](CONDUCT.md).
 * Follow our [style guide](http://adv-r.had.co.nz/Style.html).
 * Make sure you write [good commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
 * Make sure you have added the necessary tests for your code changes.
-* Run _all_ the tests using `devtools::check()` to assure nothing else was accidentally broken.
 * If you need help or unsure about anything, post an update to [your issue](https://github.com/trainome/seqwrappaper/issues/).
 
 ## Submitting your changes

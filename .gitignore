@@ -59,8 +59,6 @@ rsconnect/
 data_sim/
 data_sim-*/
 analysis/data/raw_data/
-data-out/
-data-raw/
 data/
 figures/*.RDS
 

@@ -41,43 +41,26 @@ editor_options:
 ---
 
 
-
-
-
 ## Installing `seqwrap`
 
-```{r}
-#| label: check-packages-dependencies
-#| echo: false
-#| message: false
-#| warning: false
-#| output: false
 
-# Being able to re-produce this document requires a set of packages. 
-source("R/check-packages.R")
-
-# Output needed for the figures are created in data.prep.R and 
-# m1-m5-pillon.R
-source("R/data-prep.R")
-## Only needed if output data is missong
-if(!file.exists("data-out/pillon-models.RDS")) {
-  source("R/m1-m5-pillon-data.R")
-}
-
-```
-
-
-
-
-`seqwrap` version 0.6.1 is available from GitHub. To install `seqwrap`: 
+`seqwrap` version 0.7.0 is available on [CRAN](https://CRAN.R-project.org/package=seqwrap). To install `seqwrap`: 
 
 ```{r}
 #| eval: false
 
-# Installing from GitHub requires remotes
-# install.packages("remotes")
+# Installing from CRAN
+install.packages("seqwrap")
 
-remotes::install_github("trainome/seqwrap")
+```
+
+To install the developmental version from GitHub:
+
+```{r}
+#| eval: false
+
+# Installing from Github
+pak::pkg_install("trainome/seqwrap")
 
 ```
 
@@ -101,10 +84,8 @@ library(edgeR)
 library(gt)
 
 # Load data 
-d <- dungan_counts
-
-metadata <- dungan_counts$metadata
-counts <- dungan_counts$countdata
+metadata <- seqwrap::dungan_counts$metadata
+counts <- seqwrap::dungan_counts$countdata
 
 ```
 
@@ -572,7 +553,7 @@ The above example shows how to build models with `seqwrap`. Importantly, we make
 
 ### Data preprocessing
 
-Here the Pillion gene expression data is downloaded and transformed using VST transform from `DESeq2` as suggested  in [@vestal_lmerseq_2022].
+Here the Pillion gene expression data is downloaded and transformed using VST transform from `DESeq2` as suggested in [@vestal_lmerseq_2022].
 
 ```{r}
 #| label: comp-data
@@ -592,8 +573,8 @@ library(purrr)
 library(glmmSeq)
 library(ggplot2)
 
-# Load the data from seqwrap
-dat <- seqwrap::pillon_counts
+# Load the data from seqwrappaper package
+dat <- seqwrappaper::pillon_counts
 
 
 # Filter low expressed genes and combine after filtering
@@ -741,7 +722,7 @@ Since both `lmerseq`and `seqwrap` uses the same underlying model and data, the o
 #| fig-height: 8
 
 
-# Select
+# Select relevant parameters and metrics
 seqwrap_df <- seqwrap_summary_df %>%
   subset(!term %in% c("(Intercept)", "sd__(Intercept)", "sd__Observation")) %>%
   dplyr::select("target",  "estimate", "p.value", "term" ) %>%
@@ -809,7 +790,7 @@ library(tidyverse)
 library(edgeR)
 
 # Loading the data. The Pillon 2022 data set is part of the seqwrap package as `pillon_counts`.
-dat <- seqwrap::pillon_counts
+dat <- seqwrappaper::pillon_counts
 
 # Filter low expressed genes and combine after filtering
 keep <- filterByExpr(
@@ -914,14 +895,12 @@ m1_results <- seqwrap(m1,
 
 ```
 
-
 The Poisson Observation-Level Random Effect (OLRE) model was fitted using `glmmTMB` using the `stats::poisson` family function. The same data and metadata as prepared above was used. The below code corresponds to Eq. 2 in the main text (Poisson OLRE (non-informed)). Notice that the sample id variable is used to introduce the observation-level random effect into the model.
 
 ```{r}
 #| eval: false
 
 ### Code chunk not evaluated ###
-
 m2 <- seqwrap_compose(
   data = countdat,
   metadata = metadat,
@@ -1132,28 +1111,34 @@ Below follows supplementary results from the simulation study presented in the m
 #| warning: false
 
 
-
-
-
 library(cowplot)
-source("figures/figure-opts.R")
 
+source(here::here("analysis/figures/figure-opts.R"))
 
 ## Load data from simulations
-source("R/simulation-functions.R")
+source(here::here("analysis/R/simulation-functions.R"))
 
 # Extract simulations sorts out all simulations files and combines them.
 # This is simulations with dispersion scenario 1.
-sim_results <- extract_simulations(evaluations_path = "data_sim/evaluations",
-                                   estimates_path = "data_sim/estimates",
-                                   populationeffects_path = "data_sim/simdata/popeffect",
-                                   disp_scenario = "s1")
+sim_results <- extract_simulations(
+  evaluations_path = here::here("analysis/data/raw_data/evaluations"),
+  estimates_path = here::here("analysis/data/raw_data/estimates"),
+  populationeffects_path = here::here(
+    "analysis/data/raw_data/simdata/popeffect"
+  ),
+  disp_scenario = "s1"
+)
 
 
-sim_results2 <- extract_simulations(evaluations_path = "data_sim/evaluations2",
-                                   estimates_path = "data_sim/estimates2",
-                                   populationeffects_path = "data_sim/simdata2/popeffect",
-                                   disp_scenario = "s2")
+sim_results2 <- extract_simulations(
+  evaluations_path = here::here("analysis/data/raw_data/evaluations2"),
+  estimates_path = here::here("analysis/data/raw_data/estimates2"),
+  populationeffects_path = here::here(
+    "analysis/data/raw_data/simdata2/popeffect"
+  ),
+  disp_scenario = "s2"
+)
+
 
 
 ```
@@ -1168,7 +1153,6 @@ sim_results2 <- extract_simulations(evaluations_path = "data_sim/evaluations2",
 #| message: false
 #| warning: false
 #| fig-height: 6
-
 
 
 # Number of genes in each simulated data set
@@ -1228,12 +1212,6 @@ true_effects <- bind_rows(sim_results$populationeffects,
   summarise(.by = c(term, dataset, size, disp_scenario, effect), 
             n = n()) 
 
-# Savining for manuscript
-
-# Check if data-out is a folder
-if(!dir.exists("data-out")) dir.create("data-out")
-
-saveRDS(true_effects, "data-out/true_effects.RDS")
 
 # Combine all true/false effects
 est_temp <- bind_rows(sim_results$estimates, 
@@ -1302,8 +1280,9 @@ convergence_stats <- bind_rows(sim_results$evaluations,
             conv = sum(conv),
             conv.nonstrict = sum(conv.nonstrict),
             ntotal = mean(ntotal)) 
+
 # Save for manuscript  
-saveRDS(convergence_stats, "data-out/covergence_stats.RDS")  
+saveRDS(convergence_stats, here::here("analysis/data/derived_data/convergence_stats.RDS"))
 
 ```
 
@@ -1609,9 +1588,12 @@ library(stringr)
 
 
 # To get the gsea results we need to run the figure 4 script
-if(!file.exists("data-out/gsea_results.RDS")) source("figures/figure-4.R")
+if(!file.exists(here::here("analysis/data/derived_data/gsea_results.RDS"))) {
+      source(here::here("analysis/figures/figure-4.R"))
+} 
+      
 
-gsea_results <- readRDS("data-out/gsea_results.RDS")
+gsea_results <- readRDS(here::here("analysis/data/derived_data/gsea_results.RDS"))
 
 
 gsea_up <- gsea_results |> 

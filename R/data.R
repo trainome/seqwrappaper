@@ -8,7 +8,7 @@
 #'
 #' @format A list with two data frames:
 #' \describe{
-#'   \item{counts}{Raw gene expression count matrix (genes x samples).
+#'   \item{countdata}{Raw gene expression count matrix (genes x samples).
 #'     \describe{
 #'       \item{genesymbol}{HGNC gene symbol}
 #'       \item{GSM...}{Raw counts, one column for each sample containing integer

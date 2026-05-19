@@ -9,12 +9,13 @@ Hamar, Norway
 of Inland Norway - Lillehammer, Norway
 
 <sup>3</sup>Institute of Clinical Medicine, Faculty of Health Sciences,
-UiT - The Arctic University of Norway, Hansine Hansens veg 18, 9019,
-Tromsø, Norway
+UiT - The Arctic University of Norway, Tromsø, Norway
 
 <sup>£</sup>Contact: Daniel Hammarström - daniel.hammarstrom@inn.no
 
-## Introduction
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+[![](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/trainome/seqwrappaper/master?urlpath=rstudio)
 
 This repository contains all relevant code to reproduce the results
 presented in the paper *“seqwrap: an R package for flexible iterative
@@ -23,115 +24,72 @@ fitting of high-dimensional data”* (in review). The paper presents the
 analysis of omic-type (e.g., RNA-seq, proteomics) data using
 user-defined regression models.
 
-The paper presents results from simulations defined in `simulations.R`
-and `simulations2.R` (see below). Since running the simulations is
-time-consuming, results can be downloaded from Dataverse
-(https://doi.org/10.18710/I7U71O) to this folder to enable direct
-reproducibility of the results (see instructions below, “*Downloading
-simulated data and estimates*”).
+## Contents repository structure
 
-### Repository structure and content
+### Reproducibility
 
-The script `R/make-docs.R` executes scripts in the required order to
-reproduce results presented in the manuscript and supplementary file.
-The script starts by restoring the package environment used to produce
-the submitted manuscript using
+This repository is organized as a research compendium (Marwick et al.
+2018), developed using the statistical programming language R. To work
+with the compendium, you will need installed on your computer the [R
+software](https://cloud.r-project.org/) itself and optionally [RStudio
+Desktop](https://rstudio.com/products/rstudio/download/).
+
+Installing the compendium package will activate installation of
+dependencies and make the data set used in the paper available as an R
+object (`pillon_counts`).
+
+``` r
+pak::pkg_install("trainome/seqwrappaper")
+```
+
+The script `analysis/paper/make-docs.R` executes scripts in the required
+order to reproduce results presented in the manuscript and supplementary
+files. The script starts by restoring the package environment used to
+produce the submitted manuscript using
 [renv](https://rstudio.github.io/renv/index.html). Activating the
 package environment used to produce the manuscript is done using
-`renv::restore()` (see `R/make-docs.R`)
+`renv::restore()` (see `analysis/paper/make-docs.R`) and allows for
+exact reproduction of the analyses.
 
-#### Source files for docs and images
+The **analysis** directory contains:
 
-- `supplement.qmd` Running this file reproduces the supplementary
-  document (supplement.pdf), including the tables and figures therein.
+- `/analysis/paper`: Quarto source document for the manuscript
+  (`paper.qmd`) and supplementary material (`supplement.qmd`). It also
+  has a rendered versions, `paper.pdf` (and `supplement.pdf`), suitable
+  for reading.
+- `/analysis/data`: Data used in the analysis. All data in this folder
+  is created by running scripts in the analysis folder. Note that the
+  data used in the case study is part of the `seqwrappaper` package
+  (`seqwrappaper::pillon_counts`).
+- `/analysis/data/raw_data/`: Data derived from simulation experiments
+  are stored here either after running simulations locally, or after
+  downloading simulated data sets from Dataverse.no. See below for
+  details.
+- `/analysis/data/derived_data/`: Intermediate analyses and cache files
+  used for reporting.
+- `/analysis/figures`: Scripts for producing figures 2-4 and reproduce
+  some of the results presented in the main text.
 
-- `supplement.R` is a sourceable version of the quarto file
-  (`supplement.qmd`).
+### Downloading simulated data and estimates
 
-- `manuscript-docx-v3.qmd` Contains the manuscript, with relevant code
-  for presenting results.
+The analyses presented in the paper use data generated through
+simulations and the analyses of those data. The results can be
+reproduced using by running tha `make-docs.R` script with
+`make_sim <- TRUE`, however, the runtime for this process is \> 24 h on
+a personal computer. The data sets are available for download from
+DataverseNO: https://doi.org/10.18710/I7U71O. The function
+`download_dataverse()` downloads this data to the
+`analysis/data/raw_data` folder.
 
-- `img/overview.svg` contains the raw `.svg` file used to create Figure
-  1.
-
-#### Scripts
-
-- `/R` This directory contains the scripts used to produce the results
-  presented in the paper.
-
-  0.  `check-packages.R` This script checks that all packages needed for
-      running the analyses in the repository are installed.
-
-  1.  `data-prep.R` The script prepares data and fits a preliminary
-      model to the [Pillion
-      study](https://pubmed.ncbi.nlm.nih.gov/36070371/) data set
-      (available as part of the seqwrap package). If estimates are
-      available, the script loads the data and prepares a model for the
-      mean-dispersion relationship based on the data used to generate
-      simulated counts. The output is stored in `/data/m1_results.RDS`
-
-  2.  `simulation-functions.R` Contains R functions used at different
-      points of the analysis, such as the function to simulate data sets
-      and summary functions. The other files (except data-prep.R) load
-      and execute this file to make the functions and variables in the
-      script available in the R environment
-
-  3.  `m1-m5-pillion-data.R` This file builds and saves the models based
-      on real-world data from the [Pillion
-      study](https://pubmed.ncbi.nlm.nih.gov/36070371/).
-
-  4.  `make-sims.R` Runs the files `simulations.R` and `simulations2.R`,
-      which contain the generation and modelling of the simulated data
-      set reported in the paper. These scripts are time-consuming. Files
-      generated by these scripts are placed in the `data_sim` folder.
-      The generated datasets are also available for direct download from
-      DataverseNO: https://doi.org/10.18710/I7U71O. See further
-      instructions below.
-
-- `/figures` The R files in this directory reproduce the figures in the
-  paper with `figure-opts.R` defining the custom color palette used in
-  the figures. Figure R files 2-4 require results from `data-prep.R`,
-  `m1-m5-pillon-data.R`, and `make-sims.R`.
-
-#### Misc
-
-- `/resources/` contains helper files for generating the manuscript
-  (`bibliography.bib` and .csl file).
-- `/archive/` contains older version of source files and scripts.
-
-## Reproducing the results and figures in the article
-
-To reproduce the analysis from scratch, we recommend you run the scripts
-in this order.
-
-1.  `data-prep.R`
-2.  `/R/m1-m5-pillion-data.R` To reproduce the case study analysis
-3.  `/R/make-sims.R` (or download data, see below) To reproduce the
-    simulation data and analysis
-4.  `/figures/figure-2.R` Will reproduce Figure 2
-5.  `/figures/figure-3.R` Will reproduce Figure 3
-6.  `/figures/figure-4.R` Will reproduce Figure 4
-7.  `supplement.qmd` Reproduces the supplemental information file.
-8.  `manuscript-docx-v3.qmd` Reproduces the manuscript file.
-
-## Downloading simulated data and estimates
-
-The analyses presented in the paper use data generated by simulations
-and the analyses of those data. The results can be reproduced using
-`make-sims.R`, however, the runtime for this process is several days on
-a personal computer. The datasets are available for download from
-DataverseNO: https://doi.org/10.18710/I7U71O.
-
-The downloadable data is identical to that produced by the `make-sims.R`
+The downloadable data is identical to that produced by the `make-docs.R`
 script. Downloading the data enables direct reproduction of figures and
 the manuscript.
 
-Download the files and place them in a folder called `data_sim` in the
-main directory. A total of 260 files (+ a README file) should be
-downloaded. Once downloaded, the structure of the `data_sim` folder
-should be:
+`download_dataverse()` places a total of 260 files (+ a README file) in
+the `raw_data` folder. Once downloaded, the structure of the `raw_data`
+folder should be:
 
-    -- data_sim/
+    -- raw_data/
        |-- estimates/
        |   |-- m1_estimates_1.RDS
        |   |-- …
@@ -174,3 +132,32 @@ should be:
                |-- dataset_1.RDS
                |-- …
                |-- dataset_10.RDS
+
+### Licenses
+
+**Text and figures :**
+[CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/)
+
+**Code :** See the [DESCRIPTION](DESCRIPTION) file
+
+**Data :** [CC-0](http://creativecommons.org/publicdomain/zero/1.0/)
+attribution requested in reuse
+
+### Contributions
+
+We welcome contributions from everyone. Before you get started, please
+see our [contributor guidelines](CONTRIBUTING.md). Please note that this
+project is released with a [Contributor Code of Conduct](CONDUCT.md). By
+participating in this project you agree to abide by its terms.
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-marwick2018" class="csl-entry">
+
+Marwick, Ben, Carl Boettiger, and Lincoln Mullen. 2018. *Packaging Data
+Analytical Work Reproducibly Using R (and Friends)*. PeerJ Preprints.
+<https://doi.org/10.7287/peerj.preprints.3192v2>.
+
+</div>
+
+</div>

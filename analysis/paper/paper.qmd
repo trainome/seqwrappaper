@@ -1,24 +1,24 @@
 ---
 title: "seqwrap: an R package for flexible iterative fitting of high-dimensional data"
 author:
-  - name: Chidimma Echebiri^1,2^
+  - name: Chidimma Echebiri
     email: chidimma.echebiri@inn.no
     affiliation:
       - name: University of Inland Norway
         department: Department of Biotechnology, PhD programme in applied ecology and biotechnology
-  - name: Rafi Ahmad^1^
+  - name: Rafi Ahmad
     email: rafi.ahmad@inn.no
     affiliation: 
       - name: University of Inland Norway
         department: Department of Biotechnology
-      - name: UiT - The Arctic University of Norway, Tromsø, Norway
+      - name: UiT - The Arctic University of Norway
         department: Institute of Clinical Medicine, Faculty of Health Sciences
-  - name: Stian Ellefsen^2^
+  - name: Stian Ellefsen
     email: stian.ellefsen@inn.no
     affiliation: 
       - name: University of Inland Norway
         department: Department of Public Health and Sport Sciences 
-  - name: Daniel Hammarström^2,£^
+  - name: Daniel Hammarström^£^
     email: daniel.hammarstrom@inn.no
     affiliation: 
       - name: University of Inland Norway
@@ -26,32 +26,42 @@ author:
     attributes:
       corresponding: true
 format: 
-  docx:
-    reference-doc: "../templates/template.docx"
+      typst
+#  docx:
+#    reference-doc: "resources/template.docx"
 execute:
   echo: true
   warning: false
   message: false
   comment: "#>"
-  fig-path: "../figures/"
   fig-dpi: 600
 filters:
-  - ../templates/scholarly-metadata.lua
-  - ../templates/author-info-blocks.lua
-  - ../templates/pagebreak.lua
-csl: "../templates/bmc-bioinformatics.csl"
-bibliography: "../templates/bibliography.bib"
+  - resources/pagebreak.lua
+csl: "resources/bmc-bioinformatics.csl"
+bibliography: "resources/bibliography.bib"
 abstract: |
-      **Background:** High-dimensional omics data from complex experimental designs, particularly those with hierarchical structures such as repeated measures, require flexible statistical modeling approaches. While traditionally used packages for, e.g., RNA-seq analysis, include mechanisms for parameter shrinkage to increase statistical efficiency, they often limit modeling flexibility, including choices of distributional assumptions and random-effects structures necessary for hierarchical data. Currently, there is a lack of tools that enable shrinkage mechanisms in hierarchical data models and support a general workflow across different types of omics data.
- 
-  **Results:** We present seqwrap, an R package that provides a flexible framework for iterative modeling of high-dimensional data using established R-based regression packages. Leveraging recent developments in the glmmTMB package, seqwrap can enable a two-step approach to fit negative binomial and Poisson observation-level random effect mixed-effects models with empirical Bayes shrinkage of model parameters. In simulations of RNA-seq data from a repeated-measures design, we use seqwrap to show that regularized models substantially outperformed non-informed models and mixed-effects models using transformed counts, with higher sensitivity for detecting differentially expressed genes while maintaining false discovery rates below nominal levels. Regularization also improved model convergence, producing valid estimates for >99.9% of gene targets compared to 85-90% for non-informed count-based models. In real-world data, flexibility in defining distributional assumptions enabled thorough examination of model assumptions and robust sensitivity analysis across modeling approaches.  
- 
-  **Conclusions:** seqwrap enables flexible, principled workflows for analyzing high-dimensional data from complex experimental designs with hierarchical structures. By combining established modeling frameworks with empirical Bayes regularization, seqwrap provides improved statistical performance and model convergence compared to both transformation-based approaches and non-informed models while maintaining generalizability across diverse omics data types.
+      `#text(size: 10pt)[`{=typst}
+      `#place(bottom + left, dy: 4em)[#line(length: 40%) #v(0em) #text(size: 9pt)[#super[£] Corresponding author: Daniel Hammarström, daniel.hammarstrom\@inn.no]]`{=typst}
+
+      *Background:* High-dimensional omics data from complex experimental designs, particularly those with hierarchical structures such as repeated measures, require flexible statistical modeling approaches. While traditionally used packages for, e.g., RNA-seq analysis, include mechanisms for parameter shrinkage to increase statistical efficiency, they often limit modeling flexibility, including choices of distributional assumptions and random-effects structures necessary for hierarchical data. Currently, there is a lack of tools that enable shrinkage mechanisms in hierarchical data models and support a general workflow across different types of omics data.
+
+      *Results:* We present seqwrap, an R package that provides a flexible framework for iterative modeling of high-dimensional data using established R-based regression packages. Leveraging recent developments in the glmmTMB package, seqwrap can enable a two-step approach to fit negative binomial and Poisson observation-level random effect mixed-effects models with empirical Bayes shrinkage of model parameters. In simulations of RNA-seq data from a repeated-measures design, we use seqwrap to show that regularized models substantially outperformed non-informed models and mixed-effects models using transformed counts, with higher sensitivity for detecting differentially expressed genes while maintaining false discovery rates below nominal levels. Regularization also improved model convergence, producing valid estimates for >99.9% of gene targets compared to 85-90% for non-informed count-based models. In real-world data, flexibility in defining distributional assumptions enabled thorough examination of model assumptions and robust sensitivity analysis across modeling approaches.
+
+      *Conclusions:* seqwrap enables flexible, principled workflows for analyzing high-dimensional data from complex experimental designs with hierarchical structures. By combining established modeling frameworks with empirical Bayes regularization, seqwrap provides improved statistical performance and model convergence compared to both transformation-based approaches and non-informed models while maintaining generalizability across diverse omics data types.
+      `]`{=typst}
 keywords: |
   High-dimensional data, RNA-seq, hierarchical models, shrinkage
-editor_options: 
+editor_options:
   chunk_output_type: console
 ---
+
+
+```{=typst}
+#set par.line(numbering: "1")
+#show figure.caption: set text(size: 9pt)
+#set page(numbering: "1", number-align: bottom + right)
+#set bibliography(title: none)
+```
 
 <!--
 ::: {custom-style="affiliation"}
@@ -77,15 +87,16 @@ editor_options:
 #| warning: false
 #| output: false
 
-source("R/check-packages.R")
+library(tidyverse)
+library(seqwrap)
+library(seqwrappaper)
+
 
 show_figures <- TRUE
-show_table <- FALSE
 
 
 ```
 
-{{< pagebreak >}}
 
 ## Background
 
@@ -152,7 +163,7 @@ Our model uses the parameterization $\text{Var}(Y_{g[i,j]}) = \mu_{g[i,j]} + \fr
 
 #### Simulation study
 
-To evaluate the performance of different models, we used the distribution of estimates from the preliminary model (@eq-model-1, @fig-m1-estimates) to simulate 20 data sets, each with 10000 genes. Simulated parameter values were used to construct the expected values of a negative binomial distribution. Two parameters (β~1~ and β~5~) were simulated using two sets of genes (1250 genes each) each with non-null effects. These effects were drawn from a uniform distribution with a minimum of 0.2 and a maximum of 1. For the β~1~ parameter, the effect was assigned a positive or negative sign with equal probability, while the parameter β~5~ was simulated with positive signs 75% of the time to match the characteristics of the observed data [@pillon2022]. We used the estimated mean-dispersion relationship to simulate dispersion parameter values from a normal distribution centered on the trend, with a SD equal to the residual standard error of a local polynomial regression model with equal weights given to all dispersion estimates or weights given to each observation proportional to the inverse standard error of the dispersion estimate. This created two dispersion scenarios, one with high and one with low variability among gene-specific dispersion parameters (@fig-m1-estimates).
+To evaluate the performance of different models, we used the distribution of estimates from the preliminary model (@eq-model-1, @fig-m1-estimates) to simulate 20 data sets, each with 10000 genes. Simulated parameter values were used to construct the expected values of a negative binomial distribution. Two parameters (&beta;~1~ and &beta;~5~) were simulated using two sets of genes (1250 genes each) each with non-null effects. These effects were drawn from a uniform distribution with a minimum of 0.2 and a maximum of 1. For the &beta;~1~ parameter, the effect was assigned a positive or negative sign with equal probability, while the parameter &beta;~5~ was simulated with positive signs 75% of the time to match the characteristics of the observed data [@pillon2022]. We used the estimated mean-dispersion relationship to simulate dispersion parameter values from a normal distribution centered on the trend, with a SD equal to the residual standard error of a local polynomial regression model with equal weights given to all dispersion estimates or weights given to each observation proportional to the inverse standard error of the dispersion estimate. This created two dispersion scenarios, one with high and one with low variability among gene-specific dispersion parameters (@fig-m1-estimates).
 
 ```{r}
 #| echo: false
@@ -167,7 +178,7 @@ To evaluate the performance of different models, we used the distribution of est
 
 
 if (show_figures) {
-  figure2 <- readRDS("figures/figure-2.RDS")
+  figure2 <- readRDS(here::here("analysis/figures/figure-2.RDS"))
   figure2
 }
 
@@ -217,9 +228,7 @@ Here, we used the `glmmTMB` package [@brooks2017a] to fit models that produce *m
 #| warning: false
 
 
-library(tidyverse)
-
-true_effects <- readRDS("data-out/true_effects.RDS")
+true_effects <- readRDS(here::here("analysis/data/derived_data/true_effects.RDS"))
 
 
 gene.counts <- true_effects |> 
@@ -236,12 +245,12 @@ gene.counts <- true_effects |>
 
 ```
 
-Before assessing the performance of the different modelling approaches, the simulated data sets were filtered for low-count targets. On average, `r gene.counts[3,2]` genes were retained after filtering of low-count targets, of which `r gene.counts[2,2]` (min-max, `r gene.counts[2,4]`-`r gene.counts[2,5]`) were true positives and `r gene.counts[1,2]` (`r gene.counts[1,4]`-`r gene.counts[1,5]`) were true negatives for each parameter of interest (baseline group differences, β~1~, and the second group-time interaction parameter, β~5~). Variability in the simulated gene dispersion parameter and sample size affected the number of retained targets, with more targets retained at lower dispersion variability and with larger sample sizes (Supplementary Figure 4).
+Before assessing the performance of the different modelling approaches, the simulated data sets were filtered for low-count targets. On average, `r gene.counts[3,2]` genes were retained after filtering of low-count targets, of which `r gene.counts[2,2]` (min-max, `r gene.counts[2,4]`-`r gene.counts[2,5]`) were true positives and `r gene.counts[1,2]` (`r gene.counts[1,4]`-`r gene.counts[1,5]`) were true negatives for each parameter of interest (baseline group differences, &beta;~1~, and the second group-time interaction parameter, &beta;~5~). Variability in the simulated gene dispersion parameter and sample size affected the number of retained targets, with more targets retained at lower dispersion variability and with larger sample sizes (Supplementary Figure 4).
 
 ```{r}
 #| echo: false
 
-convergence_stats <- readRDS("data-out/covergence_stats.RDS")
+convergence_stats <- readRDS(here::here("analysis/data/derived_data/convergence_stats.RDS"))
 
 conv_stats <- convergence_stats |> 
   mutate(conv = 100 * ( conv / ntotal ), 
@@ -262,8 +271,9 @@ Next, using seqwrap, we fitted the filtered simulated data sets to the different
 #| message: false
 #| warning: false
 
-# Data processing in figure 2
-est <- readRDS("data-out/simulation-estimates.RDS")
+# Data processing in figure 3
+source(here::here("analysis/figures/figure-3.R"))
+
 
 avg_sensitivity <- est |>
   filter(true_effect == "pos") |>
@@ -289,7 +299,7 @@ When comparing models for their sensitivity, i.e., the capability to identify ta
 
 Coincidentally, in most cases, regularizing the negative binomial and Poisson OLRE models improved the correlation between the ranked estimated effects and the ranked population effects used to simulate the data for truly differentially expressed targets (@fig-figure2 B; Supplementary Figure 7). The regularized versions of the count-based models also performed better than the model for transformed counts (@fig-figure2 B). Together, these results indicate that regularized count-based models are better at recovering population gene expression patterns. 
 
-After p-value adjustment, the negative binomial and Poisson OLRE models had slightly higher false discovery rates for the interaction-effect (β~5~) parameter estimates under the low-variability scenario compared to the Gaussian-transformed counts model, a difference that was rescued by regularization. The interaction effect yielded more false discoveries under the high-variability scenario, with the largest sample sizes producing the most. An analysis of the raw p-value distributions indicated that, particularly for the interaction effect, the distributions were non-uniform in most models and simulation scenarios, suggesting that the models were unable to account for the variation in the data (Supplementary Figure 6). However, all models displayed false discoveries at rates lower than the nominal 5% level (@fig-figure2 C).
+After p-value adjustment, the negative binomial and Poisson OLRE models had slightly higher false discovery rates for the interaction-effect (&beta;~5~) parameter estimates under the low-variability scenario compared to the Gaussian-transformed counts model, a difference that was rescued by regularization. The interaction effect yielded more false discoveries under the high-variability scenario, with the largest sample sizes producing the most. An analysis of the raw p-value distributions indicated that, particularly for the interaction effect, the distributions were non-uniform in most models and simulation scenarios, suggesting that the models were unable to account for the variation in the data (Supplementary Figure 6). However, all models displayed false discoveries at rates lower than the nominal 5% level (@fig-figure2 C).
 
 Collectively, the results from our simulation study support the use of the regularized negative binomial or Poisson OLRE models for inference in our real-world data set. These models are more sensitive in detecting truly differentially expressed gene targets. They also more accurately recover population gene rankings while minimizing false discoveries. These models are also less prone to failing to converge, thereby maximizing the available information from the dataset.
 
@@ -306,7 +316,7 @@ Collectively, the results from our simulation study support the use of the regul
 
 
 if (show_figures) {
-  figure3 <- readRDS("figures/figure-3.RDS")
+  figure3 <- readRDS(here::here("analysis/figures/figure-3.RDS"))
   figure3
 }
 
@@ -321,14 +331,84 @@ if (show_figures) {
 #| message: false
 #| warning: false
 
-n_estimates <- readRDS("data-out/non-est-prop.RDS")
+n_estimates <- readRDS(here::here("analysis/data/derived_data/n_estimates.RDS"))
 
 
 m3_nonest <- round(n_estimates[3,5][[1]],1)
 m1_nonest <- round(n_estimates[1,5][[1]],1)
 
 
-stat <- readRDS("data-out/estimates-pillon.RDS")
+# Get all model estimates
+models <- paste0("m", 1:5, "_results.RDS")
+
+# Collect all model results
+models_data <- list()
+for (i in 1:length(models)) {
+  models_data[[i]] <- readRDS(
+    here::here(
+      paste0("analysis/data/derived_data/", models[i])
+    )
+  )
+  names(models_data)[i] <- paste0("m", i, "_results")
+}
+
+# Summarise all models
+summaries <- lapply(models_data[1:5], seqwrap_summarise, verbose = FALSE)
+
+
+# Extract successful models
+targets_models <- bind_rows(
+  summaries$m1_results$evaluations |>
+    mutate(model = "m1"),
+  summaries$m2_results$evaluations |>
+    mutate(model = "m2"),
+  summaries$m3_results$evaluations |>
+    mutate(model = "m3"),
+  summaries$m4_results$evaluations |>
+    mutate(model = "m4"),
+  summaries$m5_results$evaluations |>
+    mutate(model = "m5")
+) |>
+
+  # Filter singular fits and bad convergence
+  filter(!(model == "m3" & isSingular == TRUE)) |>
+  # Poisson and NB models do not have pdHess == FALSE or convergence != 0
+  # but for failsafe
+  filter(
+    !(model %in%
+      c("m1", "m2", "m4", "m5") &
+      (pdHess == FALSE | convergence != 0))
+  ) |>
+  group_by(model) |>
+  distinct(target)
+
+
+stat <- bind_rows(
+      summaries$m1_results$summaries|>
+    mutate(model = "m1"), 
+      summaries$m2_results$summaries|>
+    mutate(model = "m2"), 
+      summaries$m3_results$summaries|>
+    mutate(model = "m3"), 
+      summaries$m4_results$summaries|>
+    mutate(model = "m4"), 
+      summaries$m5_results$summaries|>
+    mutate(model = "m5")  ) |> 
+
+  # This filter away singular fits from m3
+  inner_join(targets_models) |>
+
+  filter(term %in% c("groupT2D", "timepost:groupT2D", "timerec:groupT2D")) |>
+
+  # Adjust p-values and calculate MSD
+  mutate(.by = c(model, term), fdr = p.adjust(p.value, method = "fdr")) |>
+  # Approximate CI
+  mutate(
+    lwr = estimate - qnorm(0.975) * std.error,
+    upr = estimate + qnorm(0.972) * std.error,
+    msd = if_else(estimate > 0, lwr, -upr)
+  )
+      
 
 # Baseline differences
 sig_gene_baseline <- stat |> 
@@ -337,7 +417,7 @@ sig_gene_baseline <- stat |>
   
 sig_gene_baseline <- paste0(sig_gene_baseline[1,1][[1]],", fold-change: ",
        round(mean(sig_gene_baseline$estimate),2),
-       " (T2D vs. control), FDR<", 
+       " (T2D vs. control), FDR < ", 
        round(max(sig_gene_baseline[1,12]),3))  
 
 
@@ -367,7 +447,7 @@ When we ranked genes based on their fold changes between disease groups (time &t
 
 
 if (show_figures) {
-  figure4 <- readRDS("figures/figure-4.RDS")
+  figure4 <- readRDS(here::here("analysis/figures/figure-4.RDS"))
   figure4
 }
 
@@ -397,7 +477,7 @@ Using estimates from the real-world data in downstream gene set enrichment analy
 
 ## Availability and requirements
 
-Project name: seqwrap Project home page: https://github.com/trainome/seqwrap Operating system(s): Platform independent Programming language: R Other requirements: R 4.4.0 or higher License: MIT license
+Project name: seqwrap Project home page: https://github.com/trainome/seqwrap Operating system(s): Platform independent Programming language: R Other requirements: R 4.1.0 or higher License: MIT license
 
 ## List of Abbreviations
 
@@ -420,7 +500,7 @@ Not applicable
 
 #### Availability of data and materials
 
-[All data presented in the paper (and supplementary material) are openly available (Pillon et al ., [@pillon2022], GSE202295; Dungan et al. [@dungan2022], GSE195707). The code for the simulation study is available at https://github.com/trainome/seqwrap-paper. Simulation results can be replicated using code provided in the repository https://github.com/trainome/seqwrap-paper. Simulated data sets and results can also be downloaded from DataverseNO: Chidimma Echebiri, Stian Ellefsen, Rafi Ahmad, and Daniel Hammarstr&ouml;m. 2026. “Simulated Data Sets for: Seqwrap: An R Package for Flexible Iterative Fitting of High-Dimensional Data.” DataverseNO. https://doi.org/doi:10.18710/I7U71O.]{custom-style="edits"}
+All data presented in the paper (and supplementary material) are openly available (Pillon et al ., [@pillon2022], GSE202295; Dungan et al. [@dungan2022], GSE195707). The code for the simulation study is available at https://github.com/trainome/seqwrappaper. Simulation results can be replicated using code provided in the repository https://github.com/trainome/seqwrappaper. Simulated data sets and results can also be downloaded from DataverseNO: Chidimma Echebiri, Stian Ellefsen, Rafi Ahmad, and Daniel Hammarstr&ouml;m. 2026. “Simulated Data Sets for: Seqwrap: An R Package for Flexible Iterative Fitting of High-Dimensional Data.” DataverseNO. https://doi.org/doi:10.18710/I7U71O.
 
 
 #### Competing interests
@@ -432,7 +512,7 @@ The authors declare that they have no competing interests.
 No funding was received for this work.
 
 #### Authors' contributions
-CE wrote the first draft of the paper. DH and CE designed the simulation study. CE, DH, RA and SE interpreted the results and edited the manuscript. DH created the `seqwrap` package, DH and CE maintains the package.
+CE wrote the first draft of the paper. DH and CE designed the simulation study. CE, DH, RA and SE interpreted the results and edited the manuscript. DH created the `seqwrap` package CE contributed in package development, DH and CE maintains the package.
 
 
 ## References
