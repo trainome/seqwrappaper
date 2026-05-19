@@ -58,8 +58,7 @@ rsconnect/
 # Do not track simulation results or other large files
 data_sim/
 data_sim-*/
-data-raw/
-data-out/
+analysis/data/raw_data/
 data/
 figures/*.RDS
 
@@ -72,3 +71,7 @@ figures/*.RDS
 *.docx
 
 .positai
+.claude/
+
+
+.Rproj.user

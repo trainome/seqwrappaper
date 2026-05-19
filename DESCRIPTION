@@ -1,0 +1,51 @@
+Package: seqwrappaper
+Title: Research Compendium for the seqwrap Manuscript
+Version: 0.0.0.9000
+Authors@R:
+    person("Daniel", "Hammarström", , "daniel.hammarstrom@inn.no",
+           role = c("aut", "cre"))
+Description: Research compendium accompanying the seqwrap manuscript.
+    Bundles the Pillon et al. (2022) raw counts as package data and
+    declares the full set of dependencies needed to reproduce the
+    analysis scripts under analysis/.
+License: MIT + file LICENSE
+ByteCompile: true
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0
+Imports:
+    broom.mixed,
+    clusterProfiler,
+    ComplexUpset,
+    cowplot,
+    DESeq2,
+    DHARMa,
+    dplyr,
+    edgeR,
+    ggplot2,
+    ggtext,
+    glmmTMB,
+    here,
+    jsonlite,
+    knitr,
+    lme4,
+    lmerTest,
+    marginaleffects,
+    MASS,
+    org.Hs.eg.db,
+    purrr,
+    quarto,
+    seqwrap,
+    SummarizedExperiment,
+    tibble,
+    tidyr,
+    tidyselect
+Suggests:
+    devtools,
+    git2r,
+    renv
+Remotes:
+    trainome/seqwrap@seqwrap-paper
+Depends:
+    R (>= 3.5)
