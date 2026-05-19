@@ -15,7 +15,9 @@ UiT - The Arctic University of Norway, Tromsø, Norway
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/trainome/seqwrappaper/master?urlpath=rstudio)
+<!---
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/trainome/seqwrappaper/master?urlpath=rstudio)
+--->
 
 This repository contains all relevant code to reproduce the results
 presented in the paper *“seqwrap: an R package for flexible iterative
