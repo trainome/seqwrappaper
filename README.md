@@ -47,9 +47,13 @@ renv::install(".") # install the compendium package itself
 
 `renv::restore()` recreates the package environment used to produce the
 manuscript from [renv](https://rstudio.github.io/renv/index.html)’s
-lockfile, ensuring exact dependency versions. `renv::install(".")` then
-installs the compendium package from local source, which makes the data
-set used in the paper available as an R object (`pillon_counts`).
+lockfile, ensuring exact dependency versions. `lmerSeq` is not on CRAN
+and is shipped as a tarball under `vendor/`; the lockfile records it as
+a local source, so the restore step installs it from the bundled tarball
+and does not depend on `api.github.com` (and therefore works without a
+GitHub personal access token). `renv::install(".")` then installs the
+compendium package from local source, which makes the data set used in
+the paper available as an R object (`pillon_counts`).
 
 The script `analysis/paper/make-docs.R` executes scripts in the required
 order to reproduce results presented in the manuscript and supplementary
