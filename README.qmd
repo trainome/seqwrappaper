@@ -32,15 +32,16 @@ Title <- "Title of your paper goes here"
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/trainome/seqwrappaper/master?urlpath=rstudio)
 --->
 
+
+
+## Repository structure
+
 This repository contains all relevant code to reproduce the results presented in the paper *"seqwrap: an R package for flexible iterative fitting of high-dimensional data"* (in review). The paper presents the [seqwrap](https://github.com/trainome/seqwrap) package, designed for the analysis of omic-type (e.g., RNA-seq, proteomics) data using user-defined regression models.
-
-
-## Contents repository structure
 
 
 ### Reproducibility
 
-This repository is organized as a research compendium [@marwick2018], developed using the statistical programming language R. To work with the compendium, you will need installed on your computer the [R software](https://cloud.r-project.org/) itself and optionally [RStudio Desktop](https://rstudio.com/products/rstudio/download/).
+This repository is organized as a research compendium [@marwick2018], developed using the statistical programming language R. To work with the compendium, you will need installed on your computer the [R software](https://cloud.r-project.org/) itself and optionally [RStudio Desktop](https://rstudio.com/products/rstudio/download/), [Positron](https://positron.posit.co/download.html), or similar IDE.
 
 Installing the compendium package will activate installation of dependencies and make the data set used in the paper available as an R object (`pillon_counts`).  
 
@@ -139,6 +140,7 @@ We welcome contributions from everyone. Before you get started, please see our [
 #| echo: false
 #| message: false
 #| warning: false
+#| output: false
 
 
 # Get all packages loaded in this repo
@@ -147,10 +149,13 @@ pkg <- unique(dep$Package)
 
 # Make sure all packages are loaded
 lapply(pkg, require, character.only = TRUE)
+```
 
+
+```{r}
 sessionInfo()
 ```
 
 
-
+# References
 
