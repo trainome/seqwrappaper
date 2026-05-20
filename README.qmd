@@ -3,6 +3,8 @@ title: "Source files for the paper: *'seqwrap: an R package for flexible iterati
 format: gfm
 author: Chidimma Echebiri^1,2^  Rafi Ahmad^1,3^ Stian Ellefsen^2^ Daniel Hammarström^2,£^
 bibliography: resources/readme-bib.bib
+editor_options: 
+  chunk_output_type: console
 ---
 
 ^1^Department of Biotechnology, University of Inland Norway - Hamar, Norway
@@ -14,7 +16,7 @@ bibliography: resources/readme-bib.bib
 ^£^Contact: Daniel Hammarström - daniel.hammarstrom@inn.no
 
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.qmd. Please edit that file -->
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
@@ -128,4 +130,27 @@ The downloadable data is identical to that produced by the `make-docs.R` script.
 ### Contributions
 
 We welcome contributions from everyone. Before you get started, please see our [contributor guidelines](CONTRIBUTING.md). Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+
+## Session info
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+
+
+# Get all packages loaded in this repo
+dep <- renv::dependencies()
+pkg <- unique(dep$Package)
+
+# Make sure all packages are loaded
+lapply(pkg, require, character.only = TRUE)
+
+sessionInfo()
+```
+
+
+
 

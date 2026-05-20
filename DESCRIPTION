@@ -1,9 +1,15 @@
 Package: seqwrappaper
 Title: Research Compendium for the seqwrap Manuscript
-Version: 0.0.0.9000
-Authors@R:
+Version: 0.0.1
+Authors@R: c(
+    person("Chidimma", "Echebiri", , "chidimma.echebiri@inn.no",
+           role = "aut"),
+    person("Rafi", "Ahmad", , "rafi.ahmad@inn.no",
+           role = "aut"),
+    person("Stian", "Ellefsen", , "stian.ellefsen@inn.no",
+           role = "aut"),
     person("Daniel", "Hammarström", , "daniel.hammarstrom@inn.no",
-           role = c("aut", "cre"))
+           role = c("aut", "cre")))
 Description: Research compendium accompanying the seqwrap manuscript.
     Bundles the Pillon et al. (2022) raw counts as package data and
     declares the full set of dependencies needed to reproduce the
@@ -25,25 +31,35 @@ Imports:
     edgeR,
     ggplot2,
     ggtext,
+    glmmSeq,
     glmmTMB,
+    gt,
     here,
     jsonlite,
     knitr,
     lme4,
+    lmerSeq,
     lmerTest,
     marginaleffects,
     MASS,
     org.Hs.eg.db,
+    parallel,
     purrr,
     quarto,
+    rmarkdown,
     seqwrap,
+    stats,
+    stringr,
     SummarizedExperiment,
     tibble,
     tidyr,
-    tidyselect
+    tidyselect,
+    tidyverse
 Suggests:
     devtools,
     git2r,
     renv
 Depends:
-    R (>= 3.5)
+    R (>= 4.6)
+Remotes:
+    stop-pre16/lmerSeq
