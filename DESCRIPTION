@@ -1,6 +1,6 @@
 Package: seqwrappaper
 Title: Research Compendium for the seqwrap Manuscript
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: c(
     person("Chidimma", "Echebiri", , "chidimma.echebiri@inn.no",
            role = "aut"),
