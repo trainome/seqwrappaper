@@ -39,16 +39,6 @@ source(here::here("analysis/R/simulation-functions.R"))
 # Re-run simulations?
 make_sim <- FALSE
 
-# Check if simulation results are present
-if (!dir.exists(here::here("analysis/data/raw_data"))) {
-  warning(
-    "Simulation results are not present in this repository. ",
-    "Results can be downloaded from Dataverse ",
-    "(https://doi.org/10.18710/I7U71O). The simulation results are needed ",
-    "to reproduce results in the manuscript."
-  )
-}
-
 # Detect cores
 cores <- parallel::detectCores()
 
@@ -65,6 +55,17 @@ if (make_sim) {
 } else {
   download_dataverse()
 }
+
+# Check if simulation results are present
+if (!dir.exists(here::here("analysis/data/raw_data"))) {
+  warning(
+    "Simulation results are not present in this repository. ",
+    "Results can be downloaded from Dataverse ",
+    "(https://doi.org/10.18710/I7U71O). The simulation results are needed ",
+    "to reproduce results in the manuscript."
+  )
+}
+
 
 # Fit models on the real-world (Pillon) data
 # This makes the model results available in the environment (and saves to
