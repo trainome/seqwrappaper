@@ -45,7 +45,5 @@ Suggests:
     devtools,
     git2r,
     renv
-Remotes:
-    trainome/seqwrap@seqwrap-paper
 Depends:
     R (>= 3.5)
