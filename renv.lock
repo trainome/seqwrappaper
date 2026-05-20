@@ -7550,7 +7550,7 @@
       ],
       "VignetteBuilder": "knitr",
       "RemoteType": "local",
-      "RemoteUrl": "vendor/lmerSeq_0.1.7.tar.gz"
+      "RemoteUrl": "inst/lmerSeq_0.1.7.tar.gz"
     },
     "lmerTest": {
       "Package": "lmerTest",

@@ -15,14 +15,18 @@
 #
 ##############################################################################
 
-# Restore package versions (lmerSeq is locked as a Local source pointing at
-# vendor/lmerSeq_0.1.7.tar.gz, so restore does not depend on api.github.com)
+# Restore the package environment
 renv::restore()
+
+# Restore package versions (lmerSeq is locked as a Local source pointing at
+# inst/lmerSeq_0.1.7.tar.gz. If installing lmerSeq is problematic it can be
+# installed directly from source:
+# renv::install("inst/lmerSeq_0.1.7.tar.gz")
 
 # Install the research compendium package
 renv::install(".")
 
-# Packages assumed by the orchestrators in analysis/R/
+# Packages assumed in analysis/R/
 library(seqwrappaper)
 library(seqwrap)
 library(tidyverse)
