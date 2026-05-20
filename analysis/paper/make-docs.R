@@ -15,7 +15,8 @@
 #
 ##############################################################################
 
-# Restore package versions
+# Restore package versions (lmerSeq is locked as a Local source pointing at
+# vendor/lmerSeq_0.1.7.tar.gz, so restore does not depend on api.github.com)
 renv::restore()
 
 # Install the research compendium package

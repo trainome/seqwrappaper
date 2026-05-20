@@ -11,4 +11,5 @@
 ^CONTRIBUTING\.md$
 ^\.binder/Dockerfile$
 ^\.binder$
+^vendor$
 analysis

@@ -7142,7 +7142,7 @@
     "lmerSeq": {
       "Package": "lmerSeq",
       "Version": "0.1.7",
-      "Source": "GitHub",
+      "Source": "Local",
       "Type": "Package",
       "Title": "Wrappers for Fitting Linear Mixed Models to RNA-Seq Data",
       "Author": "Brian Vestal, Camille Moore, Elizabeth Wynn",
@@ -7171,12 +7171,8 @@
         "markdown"
       ],
       "VignetteBuilder": "knitr",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteUsername": "stop-pre16",
-      "RemoteRepo": "lmerSeq",
-      "RemoteRef": "master",
-      "RemoteSha": "7e3e7595d02f223ca7bcbbcfab36e65879952ec8"
+      "RemoteType": "local",
+      "RemoteUrl": "vendor/lmerSeq_0.1.7.tar.gz"
     },
     "lmerTest": {
       "Package": "lmerTest",

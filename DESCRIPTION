@@ -61,5 +61,3 @@ Suggests:
     renv
 Depends:
     R (>= 4.6)
-Remotes:
-    stop-pre16/lmerSeq
