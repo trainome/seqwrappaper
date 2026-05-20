@@ -43,16 +43,19 @@ This repository contains all relevant code to reproduce the results presented in
 
 This repository is organized as a research compendium [@marwick2018], developed using the statistical programming language R. To work with the compendium, you will need installed on your computer the [R software](https://cloud.r-project.org/) itself and optionally [RStudio Desktop](https://rstudio.com/products/rstudio/download/), [Positron](https://positron.posit.co/download.html), or similar IDE.
 
-Installing the compendium package will activate installation of dependencies and make the data set used in the paper available as an R object (`pillon_counts`).  
+To set up the environment, clone this repository, open the project (e.g. via `seqwrappaper.Rproj`), and run:
 
 ```{r}
 #| eval: false
 
-if(!require("seqwrappaper")) renv::install(".")
+renv::restore()    # install pinned dependencies from renv.lock
+renv::install(".") # install the compendium package itself
 
 ```
 
-The script `analysis/paper/make-docs.R` executes scripts in the required order to reproduce results presented in the manuscript and supplementary files. The script starts by restoring the package environment used to produce the submitted manuscript using [renv](https://rstudio.github.io/renv/index.html). Activating the package environment used to produce the manuscript is done using `renv::restore()` (see `analysis/paper/make-docs.R`) and allows for exact reproduction of the analyses.
+`renv::restore()` recreates the package environment used to produce the manuscript from [renv](https://rstudio.github.io/renv/index.html)'s lockfile, ensuring exact dependency versions. `renv::install(".")` then installs the compendium package from local source, which makes the data set used in the paper available as an R object (`pillon_counts`).
+
+The script `analysis/paper/make-docs.R` executes scripts in the required order to reproduce results presented in the manuscript and supplementary files; it runs both setup steps above before sourcing the analysis pipeline.
 
 
 The **analysis** directory contains:

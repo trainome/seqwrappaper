@@ -37,22 +37,24 @@ software](https://cloud.r-project.org/) itself and optionally [RStudio
 Desktop](https://rstudio.com/products/rstudio/download/),
 [Positron](https://positron.posit.co/download.html), or similar IDE.
 
-Installing the compendium package will activate installation of
-dependencies and make the data set used in the paper available as an R
-object (`pillon_counts`).
+To set up the environment, clone this repository, open the project
+(e.g. via `seqwrappaper.Rproj`), and run:
 
 ``` r
-pak::pkg_install("trainome/seqwrappaper")
+renv::restore()    # install pinned dependencies from renv.lock
+renv::install(".") # install the compendium package itself
 ```
+
+`renv::restore()` recreates the package environment used to produce the
+manuscript from [renv](https://rstudio.github.io/renv/index.html)’s
+lockfile, ensuring exact dependency versions. `renv::install(".")` then
+installs the compendium package from local source, which makes the data
+set used in the paper available as an R object (`pillon_counts`).
 
 The script `analysis/paper/make-docs.R` executes scripts in the required
 order to reproduce results presented in the manuscript and supplementary
-files. The script starts by restoring the package environment used to
-produce the submitted manuscript using
-[renv](https://rstudio.github.io/renv/index.html). Activating the
-package environment used to produce the manuscript is done using
-`renv::restore()` (see `analysis/paper/make-docs.R`) and allows for
-exact reproduction of the analyses.
+files; it runs both setup steps above before sourcing the analysis
+pipeline.
 
 The **analysis** directory contains:
 
@@ -175,7 +177,7 @@ sessionInfo()
 #> tzcode source: internal
 #> 
 #> attached base packages:
-#> [1] stats4    parallel  stats     graphics  grDevices utils     datasets 
+#> [1] stats4    parallel  stats     graphics  grDevices datasets  utils    
 #> [8] methods   base     
 #> 
 #> other attached packages:
@@ -201,7 +203,7 @@ sessionInfo()
 #> [39] purrr_1.2.2                 readr_2.2.0                
 #> [41] tidyr_1.3.2                 tibble_3.3.1               
 #> [43] ggplot2_4.0.3               tidyverse_2.0.0            
-#> [45] seqwrappaper_0.0.0.9000     seqwrap_0.7.0              
+#> [45] seqwrappaper_0.0.1          seqwrap_0.7.0              
 #> [47] here_1.0.2                  ggtext_0.1.2               
 #> [49] cowplot_1.2.0              
 #> 
@@ -248,12 +250,13 @@ sessionInfo()
 #> [118] gridtext_0.1.6          hms_1.1.4               locfit_1.5-9.12        
 #> [121] igraph_2.3.1            ggpubr_0.6.3            ggsignif_0.6.4         
 #> [124] enrichit_0.1.4          reshape2_1.4.5          evaluate_1.0.5         
-#> [127] nloptr_2.2.1            tzdb_0.5.0              tweenr_2.0.3           
-#> [130] polyclip_1.10-7         future_1.70.0           ggforce_0.5.0          
-#> [133] broom_1.0.13            xtable_1.8-8            tidytree_0.4.7         
-#> [136] tidydr_0.0.6            rstatix_0.7.3           later_1.4.8            
-#> [139] viridisLite_0.4.3       aplot_0.2.9             memoise_2.0.1          
-#> [142] cluster_2.1.8.2         timechange_0.4.0        globals_0.19.1
+#> [127] BiocManager_1.30.27     nloptr_2.2.1            tzdb_0.5.0             
+#> [130] tweenr_2.0.3            polyclip_1.10-7         future_1.70.0          
+#> [133] ggforce_0.5.0           broom_1.0.13            xtable_1.8-8           
+#> [136] tidytree_0.4.7          tidydr_0.0.6            rstatix_0.7.3          
+#> [139] later_1.4.8             viridisLite_0.4.3       aplot_0.2.9            
+#> [142] memoise_2.0.1           cluster_2.1.8.2         timechange_0.4.0       
+#> [145] globals_0.19.1
 ```
 
 # References
