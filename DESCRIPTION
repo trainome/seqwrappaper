@@ -26,9 +26,11 @@ Imports:
     ComplexUpset,
     cowplot,
     DESeq2,
+    desc,
     DHARMa,
     dplyr,
     edgeR,
+    GEOquery,
     ggplot2,
     ggtext,
     glmmSeq,
@@ -54,7 +56,8 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
-    tidyverse
+    tidyverse, 
+    usethis
 Suggests:
     devtools,
     git2r,

@@ -58,9 +58,11 @@ rsconnect/
 # Do not track simulation results or other large files
 data_sim/
 data_sim-*/
-analysis/data/raw_data/
-data/
-figures/*.RDS
+/analysis/data/raw_data/
+/analysis/data/derived_data/
+
+
+analysis/figures/*.RDS
 
 
 
