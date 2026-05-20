@@ -1,0 +1,165 @@
+---
+title: "Source files for the paper: *'seqwrap: an R package for flexible iterative fitting of high-dimensional data'*"
+format: gfm
+author: Chidimma Echebiri^1,2^  Rafi Ahmad^1,3^ Stian Ellefsen^2^ Daniel Hammarström^2,£^
+bibliography: resources/readme-bib.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+^1^Department of Biotechnology, University of Inland Norway - Hamar, Norway
+
+^2^Department of Public Health and Sport Sciences, University of Inland Norway - Lillehammer, Norway
+
+^3^Institute of Clinical Medicine, Faculty of Health Sciences, UiT - The Arctic University of Norway, Tromsø, Norway
+
+^£^Contact: Daniel Hammarström - daniel.hammarstrom@inn.no
+
+
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+# Please put your title here to include it in the file below.
+Title <- "Title of your paper goes here"
+```
+
+<!---
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/trainome/seqwrappaper/master?urlpath=rstudio)
+--->
+
+
+
+## Repository structure
+
+This repository contains all relevant code to reproduce the results presented in the paper *"seqwrap: an R package for flexible iterative fitting of high-dimensional data"* (in review). The paper presents the [seqwrap](https://github.com/trainome/seqwrap) package, designed for the analysis of omic-type (e.g., RNA-seq, proteomics) data using user-defined regression models.
+
+
+### Reproducibility
+
+This repository is organized as a research compendium [@marwick2018], developed using the statistical programming language R. To work with the compendium, you will need installed on your computer the [R software](https://cloud.r-project.org/) itself and optionally [RStudio Desktop](https://rstudio.com/products/rstudio/download/), [Positron](https://positron.posit.co/download.html), or similar IDE.
+
+To set up the environment, clone this repository, open the project (e.g. via `seqwrappaper.Rproj`), and run:
+
+```{r}
+#| eval: false
+
+renv::restore()    # install pinned dependencies from renv.lock
+renv::install(".") # install the compendium package itself
+
+```
+
+`renv::restore()` recreates the package environment used to produce the manuscript from [renv](https://rstudio.github.io/renv/index.html)'s lockfile, ensuring exact dependency versions. `lmerSeq` is not on CRAN and is shipped as a tarball under `vendor/`; the lockfile records it as a local source, so the restore step installs it from the bundled tarball and does not depend on `api.github.com` (and therefore works without a GitHub personal access token). `renv::install(".")` then installs the compendium package from local source, which makes the data set used in the paper available as an R object (`pillon_counts`).
+
+The script `analysis/paper/make-docs.R` executes scripts in the required order to reproduce results presented in the manuscript and supplementary files; it runs both setup steps above before sourcing the analysis pipeline.
+
+
+The **analysis** directory contains:
+
+  - `/analysis/paper`: Quarto source document for the manuscript (`paper.qmd`) and supplementary material (`supplement.qmd`). It also has a rendered versions, `paper.pdf` (and `supplement.pdf`), suitable for reading.
+  - `/analysis/data`: Data used in the analysis. All data in this folder is created by running scripts in the analysis folder. Note that the data used in the case study is part of the `seqwrappaper` package (`seqwrappaper::pillon_counts`).
+  - `/analysis/data/raw_data/`:  Data derived from simulation experiments are stored here either after running simulations locally, or after downloading simulated data sets from Dataverse.no. See below for details.
+  - `/analysis/data/derived_data/`: Intermediate analyses and cache files used for reporting. 
+  - `/analysis/figures`: Scripts for producing figures 2-4 and reproduce some of the results presented in the main text. 
+ 
+ 
+### Downloading simulated data and estimates
+
+The analyses presented in the paper use data generated through simulations and the analyses of those data. The results can be reproduced using by running tha `make-docs.R` script with `make_sim <- TRUE`, however, the runtime for this process is > 24 h on a personal computer. The data sets are available for download from DataverseNO: https://doi.org/10.18710/I7U71O. The function `download_dataverse()` downloads this data to the `analysis/data/raw_data` folder.
+
+The downloadable data is identical to that produced by the `make-docs.R` script. Downloading the data enables direct reproduction of figures and the manuscript.
+
+`download_dataverse()` places a total of 260 files (+ a README file) in the `raw_data` folder. Once downloaded, the structure of the `raw_data` folder should be:
+
+```
+-- raw_data/
+   |-- estimates/
+   |   |-- m1_estimates_1.RDS
+   |   |-- …
+   |   |-- m5_estimates_10.RDS
+   |-- estimates2/
+   |   |-- m1_estimates_1.RDS
+   |   |-- …
+   |   |-- m5_estimates_10.RDS
+   |-- evaluations/
+   |   |-- m1_evaluations_1.RDS
+   |   |-- …
+   |   |-- m5_evaluations_10.RDS
+   |-- evaluations2/
+   |   |-- m1_evaluations_1.RDS
+   |   |-- …
+   |   |-- m5_evaluations_10.RDS
+   |-- simdata/
+   |   |-- clean/
+   |   |   |-- clean_dataset_1.RDS
+   |   |   |-- …
+   |   |   |-- clean_dataset_10.RDS
+   |   |-- popeffect/
+   |   |   |-- population_effects_1.RDS
+   |   |   |-- …
+   |   |   |-- population_effects_10.RDS
+   |   |-- raw/ 
+   |       |-- dataset_1.RDS
+   |       |-- …
+   |       |-- dataset_10.RDS
+   |-- simdata2/
+       |-- clean/
+       |   |-- clean_dataset_1.RDS
+       |   |-- …
+       |   |-- clean_dataset_10.RDS
+       |-- popeffect/
+       |   |-- population_effects_1.RDS
+       |   |-- …
+       |   |-- population_effects_10.RDS
+       |-- raw/ 
+           |-- dataset_1.RDS
+           |-- …
+           |-- dataset_10.RDS
+
+``` 
+
+
+### Licenses
+
+**Text and figures :**  [CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/)
+
+**Code :** See the [DESCRIPTION](DESCRIPTION) file
+
+**Data :** [CC-0](http://creativecommons.org/publicdomain/zero/1.0/) attribution requested in reuse
+
+### Contributions
+
+We welcome contributions from everyone. Before you get started, please see our [contributor guidelines](CONTRIBUTING.md). Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+
+## Session info
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+#| warning: false
+#| output: false
+
+
+# Get all packages loaded in this repo
+dep <- renv::dependencies()
+pkg <- unique(dep$Package)
+
+# Make sure all packages are loaded
+lapply(pkg, require, character.only = TRUE)
+```
+
+
+```{r}
+sessionInfo()
+```
+
+
+# References
+
+
