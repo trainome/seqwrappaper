@@ -48,7 +48,7 @@ Installing the compendium package will activate installation of dependencies and
 ```{r}
 #| eval: false
 
-pak::pkg_install("trainome/seqwrappaper")
+if(!require("seqwrappaper")) renv::install(".")
 
 ```
 

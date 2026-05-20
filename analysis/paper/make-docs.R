@@ -18,6 +18,9 @@
 # Restore package versions
 renv::restore()
 
+# Install the research compendium package
+renv::install(".")
+
 # Packages assumed by the orchestrators in analysis/R/
 library(seqwrappaper)
 library(seqwrap)
