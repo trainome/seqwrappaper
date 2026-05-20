@@ -41,7 +41,7 @@ This repository contains all relevant code to reproduce the results presented in
 
 ### Reproducibility
 
-This repository is organized as a research compendium [@marwick2018], developed using the statistical programming language R. To work with the compendium, you will need installed on your computer the [R software](https://cloud.r-project.org/) itself and optionally [RStudio Desktop](https://rstudio.com/products/rstudio/download/), [Positron](https://positron.posit.co/download.html), or similar IDE.
+This repository is organized as a research compendium [@marwick2018], developed using the statistical programming language R. To work with the compendium, you will need installed on your computer the [R software  (>4.6)](https://cloud.r-project.org/) itself and optionally [RStudio Desktop](https://rstudio.com/products/rstudio/download/), [Positron](https://positron.posit.co/download.html), or similar IDE.
 
 To set up the environment, clone this repository, open the project (e.g. via `seqwrappaper.Rproj`), and run:
 
@@ -53,9 +53,9 @@ renv::install(".") # install the compendium package itself
 
 ```
 
-`renv::restore()` recreates the package environment used to produce the manuscript from [renv](https://rstudio.github.io/renv/index.html)'s lockfile, ensuring exact dependency versions. `lmerSeq` is not on CRAN and is shipped as a tarball under `vendor/`; the lockfile records it as a local source, so the restore step installs it from the bundled tarball and does not depend on `api.github.com` (and therefore works without a GitHub personal access token). `renv::install(".")` then installs the compendium package from local source, which makes the data set used in the paper available as an R object (`pillon_counts`).
+`renv::restore()` recreates the package environment used to produce the manuscript from [renv](https://rstudio.github.io/renv/index.html)'s lockfile, ensuring exact dependency versions. `lmerSeq` is not on CRAN and is included here as a tarball under `inst/`; the lockfile records it as a local source, so the restore step installs it from the bundled tarball. `renv::install(".")` then installs the compendium package from local source, which makes the data set used in the paper available as an R object (`pillon_counts`).
 
-The script `analysis/paper/make-docs.R` executes scripts in the required order to reproduce results presented in the manuscript and supplementary files; it runs both setup steps above before sourcing the analysis pipeline.
+The script `analysis/paper/make-docs.R` executes these steps and analysis scripts in the required order to reproduce results presented in the manuscript and supplementary files.
 
 
 The **analysis** directory contains:
@@ -69,7 +69,7 @@ The **analysis** directory contains:
  
 ### Downloading simulated data and estimates
 
-The analyses presented in the paper use data generated through simulations and the analyses of those data. The results can be reproduced using by running tha `make-docs.R` script with `make_sim <- TRUE`, however, the runtime for this process is > 24 h on a personal computer. The data sets are available for download from DataverseNO: https://doi.org/10.18710/I7U71O. The function `download_dataverse()` downloads this data to the `analysis/data/raw_data` folder.
+The analyses presented in the paper use data generated through simulations and the analyses of those data. The results can be reproduced using by running the `make-docs.R` script with `make_sim <- TRUE`, however, the runtime for this process is > 24 h on a personal computer. The data sets are available for download from DataverseNO: https://doi.org/10.18710/I7U71O. The function `download_dataverse()` downloads this data to the `analysis/data/raw_data` folder.
 
 The downloadable data is identical to that produced by the `make-docs.R` script. Downloading the data enables direct reproduction of figures and the manuscript.
 

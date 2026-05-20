@@ -61,6 +61,9 @@ data_sim-*/
 /analysis/data/raw_data/
 /analysis/data/derived_data/
 
+# Keep manuscript output
+!analysis/paper/paper.pdf
+!analysis/paper/supplement.pdf
 
 analysis/figures/*.RDS
 
