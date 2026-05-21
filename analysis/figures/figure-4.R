@@ -25,7 +25,7 @@ source(here::here("analysis/figures/figure-opts.R"))
 # Check that all models exists
 models <- paste0("m", 1:5, "_results.RDS")
 
-if (all(models %in% list.files(here::here("analysis/data/derived_data/")))) {
+if (!all(models %in% list.files(here::here("analysis/data/derived_data/")))) {
   stop(
     "Not all models have results stored in 'analysis/data/derived_data/'.
            Re-run models using 'analysis/paper/make-docs.R'"
