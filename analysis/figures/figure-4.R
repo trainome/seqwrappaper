@@ -481,7 +481,7 @@ p2 <- upset(
 
 # 04. GSEA Analaysis #######################################################
 
-gsea <- function(Term = "timerec:groupT2D", Model = "m2") {
+gsea <- function(Term = "timerec:groupT2D", Model = "m5") {
   gene_list <- stat |>
     filter(term == Term, model == Model) |>
     arrange(-estimate) |>

@@ -87,7 +87,7 @@ run_model1 <- function(CORES, test = FALSE, overwrite = FALSE) {
     metadata = metadat,
     samplename = "seq_sample_id",
     modelfun = glmmTMB::glmmTMB,
-    eval_fun = sigma_summary,
+    eval_fun = sigma_summary2,
     arguments = list(
       formula = y ~ time * group + offset(ln_efflibsize) + (1 | id),
       family = glmmTMB::nbinom2
