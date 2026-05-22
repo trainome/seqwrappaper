@@ -194,13 +194,13 @@ sim_param <- data.frame(
     )
   ) |>
   mutate(type = "sim") |>
-  select(Term, estimate, type)
+  dplyr::select(Term, estimate, type)
 
 
 # Overall distributions of observed effects
 p2 <- m1_sum$summaries |>
   mutate(type = "obs") |>
-  select(term, estimate, type) |>
+  dplyr::select(term, estimate, type) |>
   #  summarise(.by = term,
   #           s = sd(estimate)) |>
   # print()
