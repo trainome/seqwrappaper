@@ -23,7 +23,7 @@ RoxygenNote: 8.0.0
 Imports:
     broom.mixed,
     clusterProfiler,
-    ComplexUpset,
+    ggupset,
     cowplot,
     DESeq2,
     desc,

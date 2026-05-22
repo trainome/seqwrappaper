@@ -366,42 +366,6 @@
       "Author": "Hervé Pagès [aut, cre], Patrick Aboyoun [aut], Robert Gentleman [aut], Saikat DebRoy [aut], Vince Carey [ctb], Nicolas Delhomme [ctb], Felix Ernst [ctb], Wolfgang Huber [ctb] ('matchprobes' vignette), Beryl Kanali [ctb] (Converted 'MultipleAlignments' vignette from Sweave to RMarkdown), Haleema Khan [ctb] (Converted 'matchprobes' vignette from Sweave to RMarkdown), Aidan Lakshman [ctb], Kieran O'Neill [ctb], Valerie Obenchain [ctb], Marcel Ramos [ctb], Albert Vill [ctb], Jen Wokaty [ctb] (Converted 'matchprobes' vignette from Sweave to RMarkdown), Erik Wright [ctb]",
       "Maintainer": "Hervé Pagès <hpages.on.github@gmail.com>"
     },
-    "ComplexUpset": {
-      "Package": "ComplexUpset",
-      "Version": "1.3.3",
-      "Source": "Repository",
-      "Type": "Package",
-      "Title": "Create Complex UpSet Plots Using 'ggplot2' Components",
-      "Authors@R": "person( \"Michał\", \"Krassowski\", email = \"krassowski.michal+r@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-9638-7785\"))",
-      "Description": "UpSet plots are an improvement over Venn Diagram for set overlap visualizations. Striving to bring the best of the 'UpSetR' and 'ggplot2', this package offers a way to create complex overlap visualisations, using simple and familiar tools, i.e. geoms of 'ggplot2'. For introduction to UpSet concept, see Lex et al. (2014) <doi:10.1109/TVCG.2014.2346248>.",
-      "License": "MIT + file LICENSE",
-      "Encoding": "UTF-8",
-      "URL": "https://github.com/krassowski/complex-upset, https://krassowski.github.io/complex-upset/",
-      "BugReports": "https://github.com/krassowski/complex-upset/issues",
-      "Suggests": [
-        "testthat (>= 2.1.0)",
-        "knitr",
-        "rmarkdown",
-        "covr",
-        "tibble",
-        "ggplot2movies",
-        "vdiffr",
-        "jsonlite",
-        "data.table"
-      ],
-      "Imports": [
-        "ggplot2",
-        "patchwork",
-        "scales",
-        "colorspace"
-      ],
-      "VignetteBuilder": "knitr",
-      "RoxygenNote": "7.1.1",
-      "NeedsCompilation": "no",
-      "Author": "Michał Krassowski [aut, cre] (<https://orcid.org/0000-0002-9638-7785>)",
-      "Maintainer": "Michał Krassowski <krassowski.michal+r@gmail.com>",
-      "Repository": "CRAN"
-    },
     "DBI": {
       "Package": "DBI",
       "Version": "1.3.0",
@@ -5458,6 +5422,39 @@
       "Repository": "https://bioc-release.r-universe.dev",
       "NeedsCompilation": "no",
       "Author": "Guangchuang Yu [aut, cre, cph] (ORCID: <https://orcid.org/0000-0002-6485-8781>), Tommy Tsan-Yuk Lam [aut, ths], Shuangbin Xu [aut] (ORCID: <https://orcid.org/0000-0003-3513-5362>), Lin Li [ctb], Bradley Jones [ctb], Justin Silverman [ctb], Watal M. Iwasaki [ctb], Yonghe Xia [ctb], Ruizhu Huang [ctb]"
+    },
+    "ggupset": {
+      "Package": "ggupset",
+      "Version": "0.4.1",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Combination Matrix Axis for 'ggplot2' to Create 'UpSet' Plots",
+      "URL": "https://github.com/const-ae/ggupset",
+      "BugReports": "https://github.com/const-ae/ggupset/issues",
+      "Authors@R": "person(\"Constantin\", \"Ahlmann-Eltze\", email = \"artjom31415@googlemail.com\",  role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-3762-068X\"))",
+      "Description": "Replace the standard x-axis in 'ggplots' with a combination matrix to visualize complex set overlaps. 'UpSet' has introduced a new way to visualize the overlap of sets as an alternative to Venn diagrams.  This package provides a simple way to produce such plots using 'ggplot2'.  In addition it can convert any categorical axis into a combination matrix axis.",
+      "License": "GPL-3",
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "RoxygenNote": "7.3.1",
+      "Depends": [
+        "R (>= 2.10)"
+      ],
+      "Suggests": [
+        "testthat"
+      ],
+      "Imports": [
+        "ggplot2 (>= 3.3.0)",
+        "gtable",
+        "grid",
+        "tibble",
+        "rlang",
+        "scales"
+      ],
+      "NeedsCompilation": "no",
+      "Author": "Constantin Ahlmann-Eltze [aut, cre] (<https://orcid.org/0000-0002-3762-068X>)",
+      "Maintainer": "Constantin Ahlmann-Eltze <artjom31415@googlemail.com>",
+      "Repository": "CRAN"
     },
     "gh": {
       "Package": "gh",

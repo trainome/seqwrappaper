@@ -200,15 +200,15 @@ sessionInfo()
 #> [29] S4Vectors_0.50.1            Biobase_2.72.0             
 #> [31] BiocGenerics_0.58.1         generics_0.1.4             
 #> [33] marginaleffects_0.32.0      lme4_2.0-1                 
-#> [35] Matrix_1.7-5                ComplexUpset_1.3.3         
+#> [35] Matrix_1.7-5                ggupset_0.4.1              
 #> [37] clusterProfiler_4.20.0      lubridate_1.9.5            
 #> [39] forcats_1.0.1               stringr_1.6.0              
-#> [41] dplyr_1.2.1                 purrr_1.2.2                
-#> [43] readr_2.2.0                 tidyr_1.3.2                
-#> [45] tibble_3.3.1                ggplot2_4.0.3              
-#> [47] tidyverse_2.0.0             seqwrappaper_0.0.2         
-#> [49] seqwrap_0.7.0               here_1.0.2                 
-#> [51] ggtext_0.1.2                cowplot_1.2.0              
+#> [41] purrr_1.2.2                 readr_2.2.0                
+#> [43] tidyr_1.3.2                 tibble_3.3.1               
+#> [45] ggplot2_4.0.3               tidyverse_2.0.0            
+#> [47] seqwrappaper_0.0.2          seqwrap_0.7.0              
+#> [49] here_1.0.2                  ggtext_0.1.2               
+#> [51] dplyr_1.2.1                 cowplot_1.2.0              
 #> 
 #> loaded via a namespace (and not attached):
 #>   [1] fs_2.1.0                enrichplot_1.32.0       httr_1.4.8             
@@ -236,30 +236,30 @@ sessionInfo()
 #>  [67] lava_1.9.1              statmod_1.5.2           TH.data_1.1-5          
 #>  [70] nlme_3.1-169            ggtree_4.2.0            bit64_4.8.2            
 #>  [73] fontquiver_0.2.1        rprojroot_2.1.1         TMB_1.9.21             
-#>  [76] otel_0.2.0              colorspace_2.1-2        DBI_1.3.0              
-#>  [79] processx_3.9.0          emmeans_2.0.3           bit_4.6.0              
-#>  [82] compiler_4.6.0          httr2_1.2.2             xml2_1.5.2             
-#>  [85] fontBitstreamVera_0.1.1 DelayedArray_0.38.1     plotly_4.12.0          
-#>  [88] scales_1.4.0            callr_3.7.6             rappdirs_0.3.4         
-#>  [91] digest_0.6.39           lavaSearch2_2.0.3       minqa_1.2.8            
-#>  [94] XVector_0.52.0          htmltools_0.5.9         pkgconfig_2.0.3        
-#>  [97] fastmap_1.2.0           rlang_1.2.0             htmlwidgets_1.6.4      
-#> [100] farver_2.1.2            zoo_1.8-15              BiocParallel_1.46.0    
-#> [103] GOSemSim_2.38.0         magrittr_2.0.5          Formula_1.2-5          
-#> [106] ggplotify_0.1.3         patchwork_1.3.2         Rcpp_1.1.1-1.1         
-#> [109] ape_5.8-1               ggnewscale_0.5.2        gdtools_0.5.0          
-#> [112] furrr_0.4.0             stringi_1.8.7           plyr_1.8.9             
-#> [115] listenv_0.10.1          ggrepel_0.9.8           Biostrings_2.80.0      
-#> [118] splines_4.6.0           gridtext_0.1.6          hms_1.1.4              
-#> [121] locfit_1.5-9.12         igraph_2.3.1            ggpubr_0.6.3           
-#> [124] ggsignif_0.6.4          enrichit_0.1.4          reshape2_1.4.5         
-#> [127] XML_3.99-0.23           evaluate_1.0.5          BiocManager_1.30.27    
-#> [130] nloptr_2.2.1            tzdb_0.5.0              tweenr_2.0.3           
-#> [133] polyclip_1.10-7         future_1.70.0           ggforce_0.5.0          
-#> [136] broom_1.0.13            xtable_1.8-8            tidytree_0.4.7         
-#> [139] tidydr_0.0.6            rstatix_0.7.3           later_1.4.8            
-#> [142] viridisLite_0.4.3       aplot_0.2.9             memoise_2.0.1          
-#> [145] cluster_2.1.8.2         timechange_0.4.0        globals_0.19.1
+#>  [76] otel_0.2.0              DBI_1.3.0               processx_3.9.0         
+#>  [79] emmeans_2.0.3           bit_4.6.0               compiler_4.6.0         
+#>  [82] httr2_1.2.2             xml2_1.5.2              fontBitstreamVera_0.1.1
+#>  [85] DelayedArray_0.38.1     plotly_4.12.0           scales_1.4.0           
+#>  [88] callr_3.7.6             rappdirs_0.3.4          digest_0.6.39          
+#>  [91] lavaSearch2_2.0.3       minqa_1.2.8             XVector_0.52.0         
+#>  [94] htmltools_0.5.9         pkgconfig_2.0.3         fastmap_1.2.0          
+#>  [97] rlang_1.2.0             htmlwidgets_1.6.4       farver_2.1.2           
+#> [100] zoo_1.8-15              BiocParallel_1.46.0     GOSemSim_2.38.0        
+#> [103] magrittr_2.0.5          Formula_1.2-5           ggplotify_0.1.3        
+#> [106] patchwork_1.3.2         Rcpp_1.1.1-1.1          ape_5.8-1              
+#> [109] ggnewscale_0.5.2        gdtools_0.5.0           furrr_0.4.0            
+#> [112] stringi_1.8.7           plyr_1.8.9              listenv_0.10.1         
+#> [115] ggrepel_0.9.8           Biostrings_2.80.0       splines_4.6.0          
+#> [118] gridtext_0.1.6          hms_1.1.4               locfit_1.5-9.12        
+#> [121] igraph_2.3.1            ggpubr_0.6.3            ggsignif_0.6.4         
+#> [124] enrichit_0.1.4          reshape2_1.4.5          XML_3.99-0.23          
+#> [127] evaluate_1.0.5          BiocManager_1.30.27     nloptr_2.2.1           
+#> [130] tzdb_0.5.0              tweenr_2.0.3            polyclip_1.10-7        
+#> [133] future_1.70.0           ggforce_0.5.0           broom_1.0.13           
+#> [136] xtable_1.8-8            tidytree_0.4.7          tidydr_0.0.6           
+#> [139] rstatix_0.7.3           later_1.4.8             viridisLite_0.4.3      
+#> [142] aplot_0.2.9             memoise_2.0.1           cluster_2.1.8.2        
+#> [145] timechange_0.4.0        globals_0.19.1
 ```
 
 # References
