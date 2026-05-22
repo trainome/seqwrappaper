@@ -40,7 +40,6 @@ filters:
 csl: "resources/bmc-bioinformatics.csl"
 bibliography: "resources/bibliography.bib"
 abstract: |
-      `]`{=typst}
       `#text(size: 10pt)[`{=typst}
       `#place(bottom + left, dy: 4em)[#line(length: 40%) #v(0em) #text(size: 9pt)[#super[£] Corresponding author: Daniel Hammarström, daniel.hammarstrom\@inn.no]]`{=typst}
 
@@ -49,6 +48,7 @@ abstract: |
       *Results:* We present seqwrap, an R package that provides a flexible framework for iterative modeling of high-dimensional data using established R-based regression packages. Leveraging recent developments in the glmmTMB package, seqwrap can enable a two-step approach to fit negative binomial and Poisson observation-level random effect mixed-effects models with empirical Bayes shrinkage of model parameters. In simulations of RNA-seq data from a repeated-measures design, we use seqwrap to show that regularized models substantially outperformed non-informed models and mixed-effects models using transformed counts, with higher sensitivity for detecting differentially expressed genes while maintaining false discovery rates below nominal levels. Regularization also improved model convergence, producing valid estimates for >99.9% of gene targets compared to 85-90% for non-informed count-based models. In real-world data, flexibility in defining distributional assumptions enabled thorough examination of model assumptions and robust sensitivity analysis across modeling approaches.
 
       *Conclusions:* seqwrap enables flexible, principled workflows for analyzing high-dimensional data from complex experimental designs with hierarchical structures. By combining established modeling frameworks with empirical Bayes regularization, seqwrap provides improved statistical performance and model convergence compared to both transformation-based approaches and non-informed models while maintaining generalizability across diverse omics data types.
+      `]`{=typst}
 keywords: |
   High-dimensional data, RNA-seq, hierarchical models, shrinkage
 editor_options:
