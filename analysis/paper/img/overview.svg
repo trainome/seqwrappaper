@@ -9,7 +9,7 @@
    id="svg1"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
    sodipodi:docname="overview.svg"
-   inkscape:export-filename="..\figures\figure-1.pdf"
+   inkscape:export-filename="..\..\figures\figure-1.pdf"
    inkscape:export-xdpi="600"
    inkscape:export-ydpi="600"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -27,7 +27,7 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="2.0000001"
-     inkscape:cx="277.24999"
+     inkscape:cx="277.49999"
      inkscape:cy="231.99999"
      inkscape:window-width="2068"
      inkscape:window-height="1360"
@@ -212,19 +212,6 @@
        inkscape:vp_z="184.27149 : 86.428104 : 1"
        inkscape:persp3d-origin="139.54483 : 61.694192 : 1"
        id="perspective3-8" />
-    <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter4"
-       x="-0.0018219778"
-       y="-0.025031356"
-       width="1.003644"
-       height="1.0500627">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="0.0094028907"
-         id="feGaussianBlur4" />
-    </filter>
   </defs>
   <g
      inkscape:label="Lag 1"
@@ -308,9 +295,9 @@
        transform="translate(91.369261,-27.560199)"><tspan
          x="22.425316"
          y="61.555351"
-         id="tspan7"><tspan
+         id="tspan21"><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan5">seqwrap()</tspan></tspan></text>
+           id="tspan2">seqwrap()</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:0;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;white-space:pre;inline-size:37.3367;display:inline;fill:#000000;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.8;stroke-dasharray:none;stroke-opacity:1"
@@ -320,9 +307,9 @@
        transform="translate(77.617844,-44.63555)"><tspan
          x="22.425316"
          y="61.555351"
-         id="tspan9"><tspan
+         id="tspan24"><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan8">swcontainer</tspan></tspan></text>
+           id="tspan23">swcontainer</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:0;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;white-space:pre;inline-size:37.3367;display:inline;fill:#000000;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.8;stroke-dasharray:none;stroke-opacity:1"
@@ -332,9 +319,9 @@
        transform="translate(125.98062,-18.800037)"><tspan
          x="22.425316"
          y="61.555351"
-         id="tspan11"><tspan
+         id="tspan26"><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan10">seqwrap_results</tspan></tspan></text>
+           id="tspan25">seqwrap_results</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:0;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;white-space:pre;inline-size:55.9677;display:inline;fill:#000000;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.8;stroke-dasharray:none;stroke-opacity:1"
@@ -344,9 +331,9 @@
        transform="translate(158.11196,-7.8699445)"><tspan
          x="22.425316"
          y="61.555351"
-         id="tspan13"><tspan
+         id="tspan28"><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan12">seqwrap_summarise()</tspan></tspan></text>
+           id="tspan27">seqwrap_summarise()</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:0;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:end;writing-mode:lr-tb;direction:ltr;text-anchor:end;white-space:pre;inline-size:37.3367;display:inline;fill:#000000;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.8;stroke-dasharray:none;stroke-opacity:1"
@@ -356,9 +343,9 @@
        transform="translate(22.564725,-53.170564)"><tspan
          x="22.425316"
          y="61.555351"
-         id="tspan16"><tspan
+         id="tspan30"><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan15">seqwrap_compose()</tspan></tspan></text>
+           id="tspan29">seqwrap_compose()</tspan></tspan></text>
     <g
        sodipodi:type="inkscape:box3d"
        id="g3"
@@ -694,6 +681,17 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:1;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.8;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       x="64.528358"
+       y="56.533672"
+       id="text18-9-8-53-8"><tspan
+         sodipodi:role="line"
+         id="tspan18-1-4-9-8"
+         style="stroke-width:0;stroke-dasharray:none"
+         x="64.528358"
+         y="56.533672">for target g in 1:m</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:1;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.8;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        x="2.789865"
        y="82.71888"
        id="text18-9-8-3"><tspan
@@ -837,9 +835,9 @@
        transform="translate(-102.26147,-5.55625)"><tspan
          x="153.22562"
          y="12.347852"
-         id="tspan19"><tspan
+         id="tspan32"><tspan
            style="font-family:Corbel;-inkscape-font-specification:Corbel"
-           id="tspan17">validation</tspan></tspan></text>
+           id="tspan31">validation</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:1;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:24.5693;display:inline;fill:#003399;fill-opacity:1;stroke:#003399;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.8;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -849,7 +847,7 @@
        transform="matrix(0.93271109,0,0,0.96011416,-27.278475,50.136313)"><tspan
          x="153.22562"
          y="12.347852"
-         id="tspan20">Data frames</tspan></text>
+         id="tspan33">Data frames</tspan></text>
     <rect
        style="opacity:0.2;fill:#003399;stroke:#003399;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.8;paint-order:fill markers stroke"
        id="rect1"
@@ -866,17 +864,6 @@
        x="116.82161"
        y="62.597252"
        rx="0.31603286" />
-    <text
-       xml:space="preserve"
-       style="font-size:3.52777px;line-height:1;font-family:Corbel;-inkscape-font-specification:Corbel;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#003399;stroke:#000000;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0.8;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter4)"
-       x="65.345299"
-       y="56.128429"
-       id="text4"><tspan
-         sodipodi:role="line"
-         id="tspan2"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New';opacity:1;fill:#000000;stroke:#000000;stroke-width:0.1;stroke-opacity:1"
-         x="65.345299"
-         y="56.128429">for target g in 1:m</tspan></text>
     <g
        id="g22"
        transform="translate(-63.397249,7.7586723)"
