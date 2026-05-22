@@ -91,5 +91,5 @@ source(here::here("analysis/figures/figure-3.R"))
 source(here::here("analysis/figures/figure-4.R"))
 
 # Render documentation
-quarto::quarto_render(here::here("analysis/paper/paper.qmd"))
 quarto::quarto_render(here::here("analysis/paper/supplement.qmd"))
+quarto::quarto_render(here::here("analysis/paper/paper.qmd"))
