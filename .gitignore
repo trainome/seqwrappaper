@@ -87,8 +87,7 @@ analysis/figures/*.RDS
 # Do not track PDFs
 *.pdf
 
-# do not track .docx
-*.docx
+
 
 .positai
 .claude/

@@ -18,7 +18,7 @@ author:
     affiliation: 
       - name: University of Inland Norway
         department: Department of Public Health and Sport Sciences 
-  - name: Daniel Hammarström^£^
+  - name: Daniel Hammarström (Corresponding author)
     email: daniel.hammarstrom@inn.no
     affiliation: 
       - name: University of Inland Norway
@@ -56,14 +56,19 @@ editor_options:
   chunk_output_type: console
 ---
 
+
+Corresponding author name and email address: Daniel Hammarström - daniel.hammarstrom@inn.no
+
 ```{=typst}
 #set par.line(numbering: "1")
 #show figure.caption: set text(size: 9pt)
 #set page(numbering: "1", number-align: bottom + right)
 #set bibliography(title: none)
 ```
+
+
 ```{=html}
-<!--
+
 ::: {custom-style="affiliation"}
 ^1^Department of Biotechnology, University of Inland Norway - Hamar, Norway
 
@@ -73,7 +78,7 @@ editor_options:
 
 ^£^Corresponding author name and email address: Daniel Hammarström - daniel.hammarstrom@inn.no
 :::
--->
+
 ```
 
 <!-- From guidelines: Please note: editable files are required for processing in production. If your manuscript contains any non-editable files (such as PDFs) you will be required to re-submit an editable file when you submit your revised manuscript, or after editorial acceptance in case no revision is necessary. -->
