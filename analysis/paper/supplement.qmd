@@ -34,7 +34,9 @@ format:
           v(2em)  // Add vertical space before TOC
           it
         }
-csl: resources/bmc-bioinformatics.csl
+crossref:
+      fig-prefix: "Figure S"
+csl: resources/bmc-biology.csl
 bibliography: resources/bibliography.bib
 editor_options: 
   chunk_output_type: console
