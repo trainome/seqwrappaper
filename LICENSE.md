@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2026 Daniel Hammarstrom
+Copyright (c) 2026 Chidimma Echebiri, Rafi Ahmad, Stian Ellefsen, Daniel Hammarström
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
