@@ -37,7 +37,7 @@ Title <- "Title of your paper goes here"
 
 ## Repository structure
 
-This repository contains all relevant code to reproduce the results presented in the paper *"seqwrap: an R package for flexible iterative fitting of high-dimensional data"* (in review). The paper presents the [seqwrap](https://github.com/trainome/seqwrap) package, designed for the analysis of omic-type (e.g., RNA-seq, proteomics) data using user-defined regression models.
+This repository contains all relevant code to reproduce the results presented in the paper *"seqwrap: an R package for flexible iterative fitting of high-dimensional data"* (BMC Biology). The paper presents the [seqwrap](https://github.com/trainome/seqwrap) package, designed for the analysis of omic-type (e.g., RNA-seq, proteomics) data using user-defined regression models.
 
 
 ### Reproducibility
@@ -63,19 +63,18 @@ The **analysis** directory contains:
 
   - `/analysis/paper`: Quarto source document for the manuscript (`paper.qmd`; the originally submitted version is kept in `analysis/tracked-archive/paper.qmd`) and supplementary material (`supplement.qmd`). It also has a rendered versions, `paper.docx` (and `supplement.pdf`), suitable for reading.
   - `/analysis/data`: Data used in the analysis. All data in this folder is created by running scripts in the analysis folder. Note that the data used in the case study is part of the `seqwrappaper` package (`seqwrappaper::pillon_counts`).
-  - `/analysis/data/raw_data/`:  Data derived from simulation experiments are stored here either after running simulations locally, or after downloading simulated data sets from Dataverse.no. See below for details. The raw methylation arrays (GEO accession GSE114763) used in the DNA methylation case study are downloaded here by `analysis/R/methylation-case-study-dataprep.R`.
+  - `/analysis/data/raw_data/`:  Data derived from simulation experiments are stored here either after running simulations locally, or after downloading simulated data sets from Dataverse.no (or part of the froozen repository). See below for details. The raw methylation arrays (GEO accession GSE114763) used in the DNA methylation case study are downloaded here by `analysis/R/methylation-case-study-dataprep.R`.
   - `/analysis/data/derived_data/`: Intermediate analyses and cache files used for reporting, including the methylation case-study results (`permutation_v4/`, `full_v3/`, `timing_v1/`).
   - `/analysis/figures`: Scripts for producing figures 2-5 and reproduce some of the results presented in the main text. 
-  - `/analysis/archive`: Superseded scripts and results that are not used by the revised manuscript (not tracked by git).
  
  
 ### Downloading simulated data and estimates
 
 The analyses presented in the paper use data generated through simulations and the analyses of those data. The results can be reproduced using by running the `make-docs.R` script with `make_sim <- TRUE`, however, the runtime for this process is > 24 h on a personal computer. The data sets are available for download from DataverseNO: https://doi.org/10.18710/I7U71O. The function `download_dataverse()` downloads this data to the `analysis/data/raw_data` folder.
 
-The downloadable data is identical to that produced by the `make-docs.R` script. Downloading the data enables direct reproduction of figures and the manuscript.
+The downloadable data is identical to that produced by the `make-docs.R` script. Downloading the data enables direct reproduction of figures and the manuscript. Run the `download_dataverse()` function as part of `make-docs.R` for accurate reproduction.
 
-`download_dataverse()` places a total of 260 files (+ a README file) in the `raw_data` folder. Once downloaded, the structure of the `raw_data` folder should be:
+`download_dataverse()` places a total of 625 files (+ a README file) in the `raw_data` and `derived_data` folders. Once downloaded, the structure of the `raw_data` folder should be:
 
 ```
 -- raw_data/
@@ -124,18 +123,51 @@ The downloadable data is identical to that produced by the `make-docs.R` script.
 
 ``` 
 
+The methylation case-study results (365 files) are placed in the `derived_data` folder. When the simulations and the methylation case study are downloaded rather than re-run, the structure of the `derived_data` folder should be:
+
+```
+-- derived_data/
+   |-- seaborne-gset-quantile.RDS
+   |-- seaborne-metadata.RDS
+   |-- full_v2/
+   |   |-- timing.RDS
+   |-- full_v3/
+   |   |-- beta_reml.RDS
+   |   |-- beta_reml-meta.RDS
+   |   |-- m_reml.RDS
+   |   |-- m_reml-meta.RDS
+   |   |-- timing.RDS
+   |-- permutation_v4/
+   |   |-- perm_0001.RDS
+   |   |-- …
+   |   |-- perm_0200.RDS
+   |-- timing_v1/
+       |-- cell-*.RDS (152 files)
+       |-- design.RDS
+       |-- draws.RDS
+       |-- timing-cells.RDS
+       |-- timing-scaling.RDS
+       |-- warmup.RDS
+
+```
+
+Other files in `derived_data` (e.g., `m1_results.RDS`–`m5_results.RDS`, `gsea_results.RDS`) are not downloaded; they are cache files created when `make-docs.R` runs the analysis scripts.
+
 
 ### Licenses
 
 **Text and figures :**  [CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/)
 
-**Code :** See the [DESCRIPTION](DESCRIPTION) file
+**Code :** [MIT](LICENSE.md), see also the [DESCRIPTION](DESCRIPTION) file.
 
-**Data :** [CC-0](http://creativecommons.org/publicdomain/zero/1.0/) attribution requested in reuse
+The exception is `inst/lmerSeq_0.1.7.tar.gz`. It is an unmodified copy of the lmerSeq package [@vestal_lmerseq_2022], redistributed under its own license ([GPL-2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)), not under the MIT license of this compendium. We include it only because the package is not available on CRAN. For license terms and authorship, see the DESCRIPTION file in the tarball.
 
-### Contributions
+**Data :** The simulated data sets, model estimates and methylation case-study results produced in this project (`analysis/data/raw_data/` and `analysis/data/derived_data/`, also available from DataverseNO: https://doi.org/10.18710/I7U71O) are released under [CC-0](http://creativecommons.org/publicdomain/zero/1.0/). We ask that you attribute them when you reuse them.
 
-We welcome contributions from everyone. Before you get started, please see our [contributor guidelines](CONTRIBUTING.md). Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+The analyses also use two third-party data sets, which are not covered by the CC-0 dedication. If you reuse them, please cite the original publications and data sets:
+
+- **Pillon et al. (2022)**: RNA-seq counts from skeletal muscle, bundled with this package as `seqwrappaper::pillon_counts`, from GEO accession [GSE202295](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE202295) [@pillon2022; @GSE202295].
+- **Seaborne et al. (2018)**: Illumina EPIC methylation arrays used in the DNA methylation case study, from GEO accession [GSE114763](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE114763) [@seaborne2018; @GSE114763]. The raw IDAT files are not redistributed here. `analysis/R/methylation-case-study-dataprep.R` downloads them from GEO.
 
 
 ## Session info
