@@ -41,7 +41,7 @@ filters:
   - quarto
   - resources/pagebreak.lua
   - resources/listing-align.lua
-csl: "resources/bmc-bioinformatics.csl"
+csl: "resources/bmc-biology.csl"
 bibliography: "resources/bibliography.bib"
 abstract: |
       `]`{=typst}
