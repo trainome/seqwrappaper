@@ -3338,11 +3338,14 @@ Publisher: Springer},
 	date = {2022-11-16},
 }
 
-@article{lewis_glmmseq_2022,
-	title = {{glmmSeq}: General Linear Mixed Models for Gene-Level Differential Expression},
-	journaltitle = {https://myles-lewis.github.io/{glmmSeq}/},
-	author = {Lewis, Myles and Goldmann, Katriona and Elisabetta, Sciacca},
-	date = {2022},
+@software{glmmSeq,
+  author    = {Lewis, Myles and Goldmann, Katriona and Sciacca, Elisabetta and Cubuk, Cankut and Surace, Anna},
+  title     = {glmmSeq: General Linear Mixed Models for Gene-level Differential Expression},
+  version   = {0.5.5},
+  publisher = {CRAN},
+  year      = {2022},
+  doi       = {10.32614/CRAN.package.glmmSeq},
+  url       = {https://CRAN.R-project.org/package=glmmSeq}
 }
 
 @article{hoffman_dream_2021,
@@ -3528,28 +3531,29 @@ Sarcopenia is a progressive and generalised skeletal muscle disorder involving t
 	note = {Section: Articles},
 }
 
-@article{brooks_glmmtmb_nodate,
-	title = {{glmmTMB} Balances Speed and Flexibility Among Packages for Zero-inflated Generalized Linear Mixed Modeling.},
-	volume = {9},
-	doi = {doi: 10.32614/RJ-2017-066},
-	pages = {378--400},
-	number = {2},
-	journaltitle = {The R journal},
-	author = {Brooks, Mollie and Kristensen, Kasper and van Benjamin, Koen and Magnusson, Ani and Berg, Casper and Nielsen, Anders and Skaug, Hans and Maechler, Martin and Bolker, Benjamin},
+@article{brooks2017,
+  author       = {Brooks, Mollie E. and Kristensen, Kasper and van Benthem, Koen J. and Magnusson, Arni and Berg, Casper W. and Nielsen, Anders and Skaug, Hans J. and Mächler, Martin and Bolker, Benjamin M.},
+  title        = {{glmmTMB} Balances Speed and Flexibility Among Packages for Zero-inflated Generalized Linear Mixed Modeling},
+  journaltitle = {The R Journal},
+  shortjournal = {R J},
+  date         = {2017},
+  volume       = {9},
+  number       = {2},
+  pages        = {378--400},
+  doi          = {10.32614/RJ-2017-066}
 }
 
-@misc{brooks2017a,
+@software{brooks2017a,
   title = {{{glmmTMB}}: {{Generalized Linear Mixed Models}} Using {{Template Model Builder}}},
   shorttitle = {{{glmmTMB}}},
   author = {Brooks, Mollie and Bolker, Ben and Kristensen, Kasper and Maechler, Martin and Magnusson, Arni and Skaug, Hans and Nielsen, Anders and Berg, Casper and Van Bentham, Koen},
   year = 2017,
   month = feb,
-  pages = {1.1.13},
-  publisher = {Comprehensive R Archive Network},
+  version = {1.1.13},
+  publisher = {CRAN},
   doi = {10.32614/CRAN.package.glmmTMB},
-  urldate = {2025-11-14},
-  abstract = {Fit linear and generalized linear mixed models with various extensions, including zero-inflation. The models are fitted using maximum likelihood estimation via 'TMB' (Template Model Builder). Random effects are assumed to be Gaussian on the scale of the linear predictor and are integrated out using the Laplace approximation. Gradients are calculated using automatic differentiation.},
-  langid = {english}
+  url = {https://CRAN.R-project.org/package=glmmTMB},
+  urldate = {2025-11-14}
 }
 
 
@@ -3574,7 +3578,10 @@ Sarcopenia is a progressive and generalised skeletal muscle disorder involving t
 	title = {emmeans:  Estimated Marginal Means, aka Least-Squares Means},
 	version = {1.11.1},
 	author = {Lenth, Russell},
+	publisher = {CRAN},
 	date = {2025},
+	doi  = {10.32614/CRAN.package.emmeans},
+	url  = {https://CRAN.R-project.org/package=emmeans}
 }
 
 @article{ludecke_performance_2021,
@@ -3803,11 +3810,12 @@ Sarcopenia is a progressive and generalised skeletal muscle disorder involving t
   file = {C:\Users\706194\Zotero\storage\GYGNDPR5\Chen et al. - 2020 - Bioinformatics Methods for Mass Spectrometry-Based Proteomics Data Analysis.pdf}
 }
 
-@Manual{DHARMa,
+@software{DHARMa,
     title = {DHARMa: Residual Diagnostics for Hierarchical (Multi-Level / Mixed)
 Regression Models},
     author = {Florian Hartig},
     year = {2024},
+    version = {0.4.7},
     note = {R package version 0.4.7},
     url = {https://CRAN.R-project.org/package=DHARMa},
     doi = {10.32614/CRAN.package.DHARMa},
@@ -3880,18 +3888,16 @@ Regression Models},
   file = {C:\Users\706194\Zotero\storage\8L9MVQHY\Chen et al. - 2025 - edgeR v4 powerful differential analysis of sequencing data with expanded functionality and improved.pdf}
 }
 
-@article{stephens2016,
-  title = {False Discovery Rates: A New Deal},
-  shorttitle = {False Discovery Rates},
-  author = {Stephens, Matthew},
-  year = 2016,
-  month = oct,
-  journal = {Biostatistics},
-  pages = {kxw041},
-  issn = {1465-4644, 1468-4357},
-  doi = {10.1093/biostatistics/kxw041},
-  urldate = {2025-12-08},
-  langid = {english}
+@article{stephens2017,
+  author       = {Stephens, Matthew},
+  title        = {False Discovery Rates: A New Deal},
+  journaltitle = {Biostatistics},
+  shortjournal = {Biostatistics},
+  date         = {2017-04-01},
+  volume       = {18},
+  number       = {2},
+  pages        = {275--294},
+  doi          = {10.1093/biostatistics/kxw041}
 }
 
 @article{sen2025,
@@ -3982,12 +3988,15 @@ Regression Models},
   file = {C:\Users\706194\Zotero\storage\VE9BDARM\Fan et al. - 2025 - Robust sparse Bayesian regression for longitudinal gene–environment interactions.pdf}
 }
 
-@Manual{qfeatures,
+@software{qfeatures,
   title = {QFeatures: Quantitative features for mass spectrometry data},
   author = {Laurent Gatto and Christophe Vanderaa},
   year = {2026},
+  version = {1.23.1},
   note = {R package version 1.23.1},
-  url = {https://rformassspectrometry.github.io/QFeatures},
+  publisher = {Bioconductor},
+  doi       = {10.18129/B9.bioc.QFeatures},
+  url       = {https://bioconductor.org/packages/QFeatures}
 }
 
 
