@@ -36,10 +36,13 @@ format:
         }
 crossref:
       fig-prefix: "Figure S"
-csl: resources/bmc-biology.csl
+      fig-title: "Figure S"
+csl: resources/springer-basic-brackets.csl
 bibliography: resources/bibliography.bib
 editor_options: 
   chunk_output_type: console
+execute:
+      cache: true
 ---
 
 
@@ -2067,7 +2070,7 @@ results3@elapsed_time
 
 ```
 
-Below, we are comparing three different algorithms, `lme4::glmer.nb()`, `glmmTMB()` and `glmmTMB()` using a non-default optimizer. Using a subset gives indications on which algorithm is the fastest (@fig-timing). Differnt modeling packages are expected to have different computational costs depending on the model definition and the data [@brooks_glmmtmb_nodate]. Options within packages can also influence elapsed times, see e.g., the [lme4 performance tips](https://cran.r-project.org/web/packages/lme4/vignettes/lmerperf.html) vignette. 
+Below, we are comparing three different algorithms, `lme4::glmer.nb()`, `glmmTMB()` and `glmmTMB()` using a non-default optimizer. Using a subset gives indications on which algorithm is the fastest (@fig-timing). Differnt modeling packages are expected to have different computational costs depending on the model definition and the data [@brooks2017a]. Options within packages can also influence elapsed times, see e.g., the [lme4 performance tips](https://cran.r-project.org/web/packages/lme4/vignettes/lmerperf.html) vignette. 
 
 
 ```{r}
